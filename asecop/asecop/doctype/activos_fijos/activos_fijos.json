@@ -1,0 +1,60 @@
+{
+ "creation": "2021-01-26 19:45:57.616863",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "descripcion",
+  "n",
+  "a\u00f1o_fabric",
+  "vunitario",
+  "vcomercial"
+ ],
+ "fields": [
+  {
+   "fieldname": "descripcion",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "DESCRIPCION",
+   "reqd": 1
+  },
+  {
+   "fieldname": "n",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "N.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "a\u00f1o_fabric",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "A\u00d1O. FABRIC",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vunitario",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "V.UNITARIO",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vcomercial",
+   "fieldtype": "Currency",
+   "label": "V.COMERCIAL",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-26 19:45:57.616863",
+ "modified_by": "Administrator",
+ "module": "Asecop",
+ "name": "activos_fijos",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

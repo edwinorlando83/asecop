@@ -1,0 +1,60 @@
+{
+ "creation": "2021-01-27 14:07:24.173952",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "descripcion",
+  "unidad",
+  "cantidad",
+  "avaluo",
+  "total"
+ ],
+ "fields": [
+  {
+   "fieldname": "descripcion",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "DESCRIPCION",
+   "reqd": 1
+  },
+  {
+   "fieldname": "unidad",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "UNIDAD",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cantidad",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "CANTIDAD",
+   "reqd": 1
+  },
+  {
+   "fieldname": "avaluo",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "AVALUO",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "TOTAL",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-27 14:07:24.173952",
+ "modified_by": "Administrator",
+ "module": "Asecop",
+ "name": "activos_familiares",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

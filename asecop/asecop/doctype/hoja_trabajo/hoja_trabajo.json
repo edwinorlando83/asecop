@@ -1,0 +1,439 @@
+{
+ "creation": "2021-01-26 19:19:10.117320",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fecha",
+  "monto",
+  "column_break_2",
+  "agencias",
+  "cuota",
+  "column_break_4",
+  "asesor",
+  "plazo",
+  "column_break_6",
+  "socio",
+  "activo_corriente_section",
+  "efectivo",
+  "column_break_10",
+  "bancos",
+  "column_break_12",
+  "inversiones",
+  "column_break_15",
+  "otros",
+  "cuentas_por_cobrar_section",
+  "cuenta_por_cobrar",
+  "sec_inventario",
+  "inventario",
+  "sec_acfij",
+  "activos_fijos",
+  "maquinaria_equipo",
+  "terrenos_casas",
+  "vehiculo",
+  "otro_activos",
+  "sec_aux",
+  "cuentasporcobrar",
+  "prestamos",
+  "prestamos_largoplazo",
+  "otros_pasivos",
+  "sec_actfam",
+  "activos_familiares",
+  "sec_auxfamil",
+  "actividad_principal",
+  "auxiliar_ventas",
+  "sec_flujo",
+  "enero",
+  "julio",
+  "promedio",
+  "column_break_41",
+  "febrero",
+  "agosto",
+  "total",
+  "column_break_43",
+  "marzo",
+  "septiembre",
+  "column_break_45",
+  "abril",
+  "octubre",
+  "column_break_47",
+  "mayo",
+  "noviembre",
+  "column_break_49",
+  "junio",
+  "diciembre",
+  "sec_",
+  "margen_ganancias",
+  "sec_auxcompras",
+  "frecuencia_compras",
+  "productos_aux_compras",
+  "sec_flujos"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "fecha",
+   "fieldtype": "Date",
+   "label": "Fecha"
+  },
+  {
+   "fieldname": "agencias",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Agencia",
+   "options": "Agencias",
+   "reqd": 1
+  },
+  {
+   "fieldname": "asesor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Asesor",
+   "options": "Asesor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "socio",
+   "fieldtype": "Link",
+   "label": "Socio",
+   "options": "Socio",
+   "reqd": 1
+  },
+  {
+   "fieldname": "monto",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "MONTO SOLICITADO",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cuota",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "CUOTA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "plazo",
+   "fieldtype": "Currency",
+   "label": "PLAZO",
+   "reqd": 1
+  },
+  {
+   "fieldname": "activo_corriente_section",
+   "fieldtype": "Section Break",
+   "label": "ACTIVO CORRIENTE DISPONIBLE"
+  },
+  {
+   "fieldname": "efectivo",
+   "fieldtype": "Currency",
+   "label": "Efectivo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bancos",
+   "fieldtype": "Currency",
+   "label": "Bancos",
+   "reqd": 1
+  },
+  {
+   "default": "0.0",
+   "fieldname": "inversiones",
+   "fieldtype": "Currency",
+   "label": "Inversiones"
+  },
+  {
+   "default": "0",
+   "fieldname": "otros",
+   "fieldtype": "Currency",
+   "label": "Otros"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cuentas_por_cobrar_section",
+   "fieldtype": "Section Break",
+   "label": "CUENTAS POR COBRAR"
+  },
+  {
+   "fieldname": "cuenta_por_cobrar",
+   "fieldtype": "Table",
+   "options": "cuenta_por_cobrar"
+  },
+  {
+   "fieldname": "sec_inventario",
+   "fieldtype": "Section Break",
+   "label": "INVENTARIO"
+  },
+  {
+   "fieldname": "inventario",
+   "fieldtype": "Table",
+   "label": "MATERIA PRIMA /MERCADERIA / PRODUCTOS EN PROCESO",
+   "options": "inventario"
+  },
+  {
+   "fieldname": "activos_fijos",
+   "fieldtype": "Table",
+   "label": "MUEBLES Y ENSERES",
+   "options": "activos_fijos"
+  },
+  {
+   "fieldname": "maquinaria_equipo",
+   "fieldtype": "Table",
+   "label": "MAQUINARIA Y EQUIPO",
+   "options": "maquinaria_equipo"
+  },
+  {
+   "fieldname": "terrenos_casas",
+   "fieldtype": "Table",
+   "label": "TERRENOS Y CASAS",
+   "options": "terrenos_casas"
+  },
+  {
+   "fieldname": "vehiculo",
+   "fieldtype": "Table",
+   "label": "VEHICULO",
+   "options": "vehiculo"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "sec_acfij",
+   "fieldtype": "Section Break",
+   "label": "ACTIVOS FIJOS DE NEGOCIO"
+  },
+  {
+   "fieldname": "otro_activos",
+   "fieldtype": "Table",
+   "label": "OTROS ACTIVOS",
+   "options": "otro_activos"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "sec_aux",
+   "fieldtype": "Section Break",
+   "label": "AUXILIAR DE PASIVOS"
+  },
+  {
+   "fieldname": "cuentasporcobrar",
+   "fieldtype": "Table",
+   "label": "CUENTAS POR PAGAR",
+   "options": "cuentasporcobrar"
+  },
+  {
+   "fieldname": "prestamos",
+   "fieldtype": "Table",
+   "label": "PRESTAMOS BANCOS / COOPERATIVAS",
+   "options": "prestamos"
+  },
+  {
+   "fieldname": "prestamos_largoplazo",
+   "fieldtype": "Table",
+   "label": "PRESTAMOS BANCOS / COOPERATIVAS A LARGO PLAZO",
+   "options": "prestamos_largoplazo"
+  },
+  {
+   "fieldname": "otros_pasivos",
+   "fieldtype": "Table",
+   "label": "OTROS PASIVOS",
+   "options": "otros_pasivos"
+  },
+  {
+   "fieldname": "sec_actfam",
+   "fieldtype": "Section Break",
+   "label": "ACTIVOS FIJOS FAMILIARES (CASA TERRENO VEHICULO)"
+  },
+  {
+   "fieldname": "activos_familiares",
+   "fieldtype": "Table",
+   "label": "ACTIVOS FAMILIARES",
+   "options": "activos_familiares"
+  },
+  {
+   "fieldname": "sec_auxfamil",
+   "fieldtype": "Section Break",
+   "label": "AUXILIAR PARA EL ESTADO DE RESULTADOS"
+  },
+  {
+   "fieldname": "actividad_principal",
+   "fieldtype": "Data",
+   "label": "ACTIVIDAD PRINCIPAL",
+   "reqd": 1
+  },
+  {
+   "fieldname": "auxiliar_ventas",
+   "fieldtype": "Table",
+   "label": "AUXILIAR DE VENTAS",
+   "options": "auxiliar_ventas"
+  },
+  {
+   "fieldname": "sec_flujo",
+   "fieldtype": "Section Break",
+   "label": "FLUJO DE VENTAS POR MES "
+  },
+  {
+   "fieldname": "enero",
+   "fieldtype": "Currency",
+   "label": "ENERO"
+  },
+  {
+   "fieldname": "febrero",
+   "fieldtype": "Currency",
+   "label": "FEBRERO"
+  },
+  {
+   "fieldname": "marzo",
+   "fieldtype": "Currency",
+   "label": "MARZO"
+  },
+  {
+   "fieldname": "abril",
+   "fieldtype": "Currency",
+   "label": "ABRIL"
+  },
+  {
+   "fieldname": "mayo",
+   "fieldtype": "Currency",
+   "label": "MAYO"
+  },
+  {
+   "fieldname": "junio",
+   "fieldtype": "Currency",
+   "label": "JUNIO"
+  },
+  {
+   "fieldname": "column_break_41",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_43",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_45",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_47",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_49",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "julio",
+   "fieldtype": "Currency",
+   "label": "JULIO"
+  },
+  {
+   "fieldname": "agosto",
+   "fieldtype": "Currency",
+   "label": "AGOSTO"
+  },
+  {
+   "fieldname": "septiembre",
+   "fieldtype": "Currency",
+   "label": "SEPTIEMBRE"
+  },
+  {
+   "fieldname": "octubre",
+   "fieldtype": "Currency",
+   "label": "OCTUBRE"
+  },
+  {
+   "fieldname": "noviembre",
+   "fieldtype": "Currency",
+   "label": "NOVIEMBRE"
+  },
+  {
+   "fieldname": "diciembre",
+   "fieldtype": "Currency",
+   "label": "DICIEMBRE"
+  },
+  {
+   "fieldname": "promedio",
+   "fieldtype": "Currency",
+   "label": "PROMEDIO"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "TOTAL"
+  },
+  {
+   "fieldname": "sec_",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "margen_ganancias",
+   "fieldtype": "Table",
+   "label": "MARGEN DE GANANCIA Y COSTO DE VENTAS",
+   "options": "margen_ganancias"
+  },
+  {
+   "fieldname": "sec_auxcompras",
+   "fieldtype": "Section Break",
+   "label": "AUXILIAR DE COMPRAS"
+  },
+  {
+   "fieldname": "frecuencia_compras",
+   "fieldtype": "Table",
+   "label": "FRECUENCIADE COMPRAS",
+   "options": "frecuencia_compras"
+  },
+  {
+   "fieldname": "productos_aux_compras",
+   "fieldtype": "Data",
+   "options": "productos_aux_compras"
+  },
+  {
+   "fieldname": "sec_flujos",
+   "fieldtype": "Section Break",
+   "label": "FLUJO DE INGRESOS POR ACTIVIDAD"
+  }
+ ],
+ "modified": "2021-01-27 17:48:43.557572",
+ "modified_by": "Administrator",
+ "module": "Asecop",
+ "name": "hoja_trabajo",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,60 @@
+{
+ "creation": "2021-01-27 17:33:57.040831",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "producto",
+  "preciocompra",
+  "precioventa",
+  "utilidad",
+  "costo"
+ ],
+ "fields": [
+  {
+   "fieldname": "producto",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "PRODUCTO",
+   "reqd": 1
+  },
+  {
+   "fieldname": "preciocompra",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "P.COMPRA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "precioventa",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "P.VENTA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "utilidad",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "MARGEN UT.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "costo",
+   "fieldtype": "Currency",
+   "label": "C.VENTA",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-27 17:33:57.040831",
+ "modified_by": "Administrator",
+ "module": "Asecop",
+ "name": "margen_ganancias",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
