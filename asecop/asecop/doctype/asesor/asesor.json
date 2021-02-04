@@ -23,7 +23,7 @@
    "label": "Tel\u00e9fono"
   }
  ],
- "modified": "2021-01-26 19:23:01.609071",
+ "modified": "2021-02-04 11:45:00.120157",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "Asesor",
@@ -38,6 +38,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Usuario Administrador",
    "share": 1,
    "write": 1
   }

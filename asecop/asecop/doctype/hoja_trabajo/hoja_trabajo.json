@@ -568,7 +568,7 @@
    "read_only": 1
   }
  ],
- "modified": "2021-02-04 06:42:12.263319",
+ "modified": "2021-02-04 11:44:39.466639",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
@@ -583,6 +583,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Usuario Administrador",
    "share": 1,
    "write": 1
   }
