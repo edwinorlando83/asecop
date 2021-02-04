@@ -42,12 +42,13 @@
   {
    "fieldname": "observacion",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "OBSERVACION",
    "reqd": 1
   }
  ],
  "istable": 1,
- "modified": "2021-01-26 19:52:00.776130",
+ "modified": "2021-02-01 07:54:47.896314",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "terrenos_casas",

@@ -43,18 +43,20 @@
   {
    "fieldname": "avaluo",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "AVALUO",
    "reqd": 1
   },
   {
    "fieldname": "observacion",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "OBSERVACION",
    "reqd": 1
   }
  ],
  "istable": 1,
- "modified": "2021-01-26 20:02:13.097025",
+ "modified": "2021-02-02 07:04:22.533404",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "vehiculo",

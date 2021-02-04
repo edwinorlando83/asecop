@@ -5,10 +5,10 @@
  "engine": "InnoDB",
  "field_order": [
   "descripcion",
-  "n",
+  "numero",
   "a\u00f1o_fabric",
   "vunitario",
-  "vcomercial"
+  "total"
  ],
  "fields": [
   {
@@ -16,13 +16,6 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "DESCRIPCION",
-   "reqd": 1
-  },
-  {
-   "fieldname": "n",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "N.",
    "reqd": 1
   },
   {
@@ -40,14 +33,24 @@
    "reqd": 1
   },
   {
-   "fieldname": "vcomercial",
+   "fieldname": "numero",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "N.",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "V.COMERCIAL",
+   "read_only": 1,
    "reqd": 1
   }
  ],
  "istable": 1,
- "modified": "2021-01-26 19:49:40.556221",
+ "modified": "2021-02-01 07:42:22.922362",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "maquinaria_equipo",
