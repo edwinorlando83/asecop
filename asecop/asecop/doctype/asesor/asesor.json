@@ -5,8 +5,16 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "agencias",
   "nombre",
-  "telefono"
+  "telefono",
+  "foto",
+  "correo",
+  "column_break_6",
+  "provincia",
+  "canton",
+  "parroquia",
+  "direccion"
  ],
  "fields": [
   {
@@ -21,9 +29,51 @@
    "fieldname": "telefono",
    "fieldtype": "Data",
    "label": "Tel\u00e9fono"
+  },
+  {
+   "fieldname": "agencias",
+   "fieldtype": "Link",
+   "label": "Agencia",
+   "options": "Agencias"
+  },
+  {
+   "fieldname": "foto",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "foto"
+  },
+  {
+   "fieldname": "correo",
+   "fieldtype": "Data",
+   "label": "Correo"
+  },
+  {
+   "fieldname": "provincia",
+   "fieldtype": "Select",
+   "label": "Provincia"
+  },
+  {
+   "fieldname": "canton",
+   "fieldtype": "Select",
+   "label": "Canton"
+  },
+  {
+   "fieldname": "parroquia",
+   "fieldtype": "Select",
+   "label": "Parroquia"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "direccion",
+   "fieldtype": "Small Text",
+   "label": "Direccion"
   }
  ],
- "modified": "2021-02-04 11:45:00.120157",
+ "image_field": "foto",
+ "modified": "2021-02-05 08:59:04.785686",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "Asesor",
