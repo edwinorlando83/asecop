@@ -54,9 +54,17 @@
   "total_otrosactivos",
   "sec_aux",
   "cuentasporcobrar",
+  "total_cuentasporcobrar",
+  "total_cuentasporcobrar_html",
   "prestamos",
+  "total_prestamos",
+  "total_prestamos_html",
   "prestamos_largoplazo",
+  "total_prestamolargo",
+  "total_prestamolargo_html",
   "otros_pasivos",
+  "total_otros_pasivos",
+  "total_otros_pasivos_html",
   "sec_actfam",
   "activos_familiares",
   "total_activos_familiares_html",
@@ -88,11 +96,20 @@
   "diciembre",
   "sec_",
   "margen_ganancias",
+  "promedio_utilidad",
+  "promedio_costo",
+  "html_promedio_uticos",
   "sec_auxcompras",
   "frecuencia_compras",
   "productos_aux_compras",
+  "total_productos_aux_compras",
+  "html_productos_aux_compras",
   "sec_flujos",
-  "naming_series"
+  "naming_series",
+  "section_break_101",
+  "htmltitulo11",
+  "flujo_ingreso",
+  "flujo_ingreso_gastos"
  ],
  "fields": [
   {
@@ -236,7 +253,6 @@
    "options": "otro_activos"
   },
   {
-   "collapsible": 1,
    "fieldname": "sec_aux",
    "fieldtype": "Section Break",
    "label": "AUXILIAR DE PASIVOS"
@@ -401,7 +417,7 @@
   },
   {
    "fieldname": "productos_aux_compras",
-   "fieldtype": "Data",
+   "fieldtype": "Table",
    "options": "productos_aux_compras"
   },
   {
@@ -567,9 +583,96 @@
    "fieldtype": "Currency",
    "label": "TOTAL",
    "read_only": 1
+  },
+  {
+   "fieldname": "total_cuentasporcobrar",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "fieldname": "total_cuentasporcobrar_html",
+   "fieldtype": "HTML",
+   "options": "Total cuentas por pagar: {{doc.total_cuentasporcobrar}}"
+  },
+  {
+   "fieldname": "total_prestamos",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "fieldname": "total_prestamos_html",
+   "fieldtype": "HTML",
+   "options": "Total Prestamos: {{doc.total_prestamos}}"
+  },
+  {
+   "fieldname": "total_prestamolargo",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "fieldname": "total_prestamolargo_html",
+   "fieldtype": "HTML",
+   "options": "Total Prestamos a largo plazo: {{doc.total_prestamolargo}}"
+  },
+  {
+   "fieldname": "total_otros_pasivos",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "fieldname": "total_otros_pasivos_html",
+   "fieldtype": "HTML",
+   "options": "Total otros pasivos: {{doc.total_otros_pasivos}}"
+  },
+  {
+   "fieldname": "promedio_utilidad",
+   "fieldtype": "Percent",
+   "hidden": 1
+  },
+  {
+   "fieldname": "promedio_costo",
+   "fieldtype": "Percent",
+   "hidden": 1
+  },
+  {
+   "fieldname": "html_promedio_uticos",
+   "fieldtype": "HTML",
+   "options": "Promedio Utilidad:{{doc.promedio_utilidad}}  Promedio Costo:{{doc.promedio_costo}}"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_productos_aux_compras",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "fieldname": "html_productos_aux_compras",
+   "fieldtype": "HTML",
+   "options": "Total Productos:{{doc.total_productos_aux_compras}}"
+  },
+  {
+   "fieldname": "section_break_101",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "htmltitulo11",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: red;\"> FLUJO DE INGRESOS POR ACTIVIDAD </div>"
+  },
+  {
+   "fieldname": "flujo_ingreso",
+   "fieldtype": "Table",
+   "label": "INGRESOS DEL NEGOCIO",
+   "options": "flujo_ingreso"
+  },
+  {
+   "fieldname": "flujo_ingreso_gastos",
+   "fieldtype": "Table",
+   "label": "GASTOS DEL NEGOCIO",
+   "options": "flujo_ingreso_gastos"
   }
  ],
- "modified": "2021-02-05 08:55:34.758064",
+ "modified": "2021-02-07 07:11:43.020563",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",

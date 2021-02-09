@@ -2,10 +2,37 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('hoja_trabajo', {
-	// refresh: function(frm) {
+	  refresh: function(frm) {
+		cur_frm.fields_dict["frecuencia_compras"].grid.wrapper.find('.grid-add-row').hide();
+		cur_frm.fields_dict["flujo_ingreso"].grid.wrapper.find('.grid-add-row').hide();
+		//cur_frm.fields_dict["frecuencia_compras"].grid.add_custom_button('Add Time Slots');
+		 
+  },
+onload(frm){
+ 
+ //frm.get_field("frecuencia_compras").grid.only_sortable();
+ if ( frm.is_new()) {
+	frm.add_child('frecuencia_compras', {frecuencia: 'COMPRAS DIARIAS',	valor: 0,	dias:0,		total:0	});
+   frm.add_child('frecuencia_compras', {	frecuencia: 'COMPRAS SEMANALES',	valor: 0,	dias:0,	total:0	});
+  frm.add_child('frecuencia_compras', {	frecuencia: 'COMPRA A CREDITO SEMANAL',	valor: 0,dias:0,total:0	});
 
-	// }
+	//flujo_ingreso
+	frm.add_child('flujo_ingreso', {descripcion: 'Ingreso por ventas.',	actividad1: 0,actividad2:0,	total:0	});
+	frm.add_child('flujo_ingreso', {descripcion: 'Compras.',	actividad1: 0,actividad2:0,	total:0	});
+	frm.add_child('flujo_ingreso', {descripcion: 'Costo de Ventas',	actividad1: 0,actividad2:0,	total:0	});
 
+    frm.add_child('flujo_ingreso_gastos', {descripcion: 'Arriendo',	actividad1: 0,actividad2:0,	total:0	});
+ frm.add_child('flujo_ingreso_gastos', {descripcion: 'Servicios Básicos',	actividad1: 0,actividad2:0,	total:0	});
+ frm.add_child('flujo_ingreso_gastos', {descripcion: 'Transporte',	actividad1: 0,actividad2:0,	total:0	});
+ frm.add_child('flujo_ingreso_gastos', {descripcion: 'Mano de Obra',	actividad1: 0,actividad2:0,	total:0	});
+ frm.add_child('flujo_ingreso_gastos', {descripcion: 'Viaticos',	actividad1: 0,actividad2:0,	total:0	});
+ frm.add_child('flujo_ingreso_gastos', {descripcion: 'Otros',	actividad1: 0,actividad2:0,	total:0	});
+
+ }
+ 
+
+
+},
 	efectivo: function(frm) {
 		calcular_total_disponible(frm);
 	  },
@@ -112,6 +139,139 @@ frappe.ui.form.on("cuenta_por_cobrar", {
 	  }
   });
   
+
+  frappe.ui.form.on("cuentasporcobrar", {	
+	monto (frm, cdt, cdn) { 		 
+		calcular_cuentasporcobrar();
+	} 
+  });
+
+  frappe.ui.form.on("prestamos", {	
+	saldo (frm, cdt, cdn) { 		 
+		calcular_prestamos();
+	} 
+  });
+
+  frappe.ui.form.on("prestamos_largoplazo", {	
+	saldo (frm, cdt, cdn) { 		 
+		calcular_prestamos_largoplazo();
+	} 
+  });
+
+  frappe.ui.form.on("otros_pasivos", {	
+	saldo (frm, cdt, cdn) { 		 
+		calcular_otros_pasivos();
+	} 
+  });
+
+  
+  frappe.ui.form.on("margen_ganancias", {	
+	preciocompra (frm, cdt, cdn) { 		 
+		calcular_costo_venta();
+	} ,
+	precioventa(frm, cdt, cdn) { 		 
+		calcular_costo_venta();
+	} 
+  });
+  
+  frappe.ui.form.on("frecuencia_compras", {	
+	valor (frm, cdt, cdn) { 		 
+		calcular_frecuencia_compras();
+	} ,
+	dias(frm, cdt, cdn) { 		 
+		calcular_frecuencia_compras();
+	} 
+  });
+
+  frappe.ui.form.on("productos_aux_compras", {	
+	valor (frm, cdt, cdn) { 		 
+		calcular_productos_aux_compras();
+	} ,
+	cantidad(frm, cdt, cdn) { 		 
+		calcular_productos_aux_compras();
+	} 
+  });
+
+
+  function calcular_productos_aux_compras(){
+	var t_total=0;	 
+	$.each(cur_frm.doc.productos_aux_compras, function(i, row) {  
+		row.total  =row.valor * row.cantidad;
+        t_total+= row.total ;
+		 
+	  });	
+      cur_frm.doc.total_productos_aux_compras =  t_total; 
+	  cur_frm.refresh_fields();
+}
+
+
+  function calcular_frecuencia_compras(){
+	var t_total=0;	 
+	$.each(cur_frm.doc.frecuencia_compras, function(i, row) {  
+		row.total  =row.valor * row.dias;
+		 
+		  t_total+= row.total ;
+		 
+	  });	
+	//  cur_frm.doc.total_otros_pasivos =  t_total; 
+	  cur_frm.refresh_fields();
+}
+  
+
+  function calcular_costo_venta (){
+	var t_total=0;
+	var t_total2=0;
+	var _count =0;	 
+	$.each(cur_frm.doc.margen_ganancias, function(i, row) {  
+		  var s_total  =(  row.preciocompra / row.precioventa ) * 100;	
+		  row.costo = roundNumber(s_total,2);
+		  row.utilidad = 100 -  row.costo ;
+		  t_total+=row.utilidad;
+		  t_total2+= row.costo;
+		  _count++;
+	  });
+	 
+	  cur_frm.doc.promedio_utilidad =   roundNumber(t_total /_count ,2); 
+	  cur_frm.doc.promedio_costo =   roundNumber(t_total2 /_count ,2); 
+
+	  cur_frm.refresh_fields();
+}
+  function calcular_otros_pasivos(){
+	var t_total=0;	 
+	$.each(cur_frm.doc.otros_pasivos, function(i, row) {  
+		   
+		  t_total+=row.monto;
+	  });	
+	  cur_frm.doc.total_otros_pasivos =  t_total; 
+	  cur_frm.refresh_fields();
+}
+  function calcular_prestamos_largoplazo (){
+	var t_total=0;	 
+	$.each(cur_frm.doc.prestamos_largoplazo, function(i, row) {  
+		   
+		  t_total+=row.saldo;
+	  });	
+	  cur_frm.doc.total_prestamolargo =  t_total; 
+	  cur_frm.refresh_fields();
+}
+  function calcular_prestamos (){
+	var t_total=0;	 
+	$.each(cur_frm.doc.prestamos, function(i, row) {  
+		   
+		  t_total+=row.saldo;
+	  });	
+	  cur_frm.doc.total_prestamos =  t_total; 
+	  cur_frm.refresh_fields();
+}
+
+  function calcular_cuentasporcobrar (){
+	var t_total=0;	 
+	$.each(cur_frm.doc.cuentasporcobrar, function(i, row) {   
+		  t_total+=row.monto;
+	  });	
+	  cur_frm.doc.total_cuentasporcobrar =  t_total; 
+	  cur_frm.refresh_fields();
+}
 
 
   function sumarmeses(){

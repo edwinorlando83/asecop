@@ -51,12 +51,11 @@
    "fieldname": "observacion",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "OBSERVACION",
-   "reqd": 1
+   "label": "OBSERVACION"
   }
  ],
  "istable": 1,
- "modified": "2021-02-02 07:04:22.533404",
+ "modified": "2021-02-06 07:39:02.316022",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "vehiculo",

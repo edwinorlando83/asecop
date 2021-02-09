@@ -1,50 +1,49 @@
 {
- "creation": "2021-01-27 17:38:41.802721",
+ "creation": "2021-02-07 07:10:55.695248",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "frecuencia",
-  "valor",
-  "dias",
+  "descripcion",
+  "actividad1",
+  "actividad2",
   "total"
  ],
  "fields": [
   {
-   "fieldname": "frecuencia",
+   "fieldname": "descripcion",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "FRECUENCIADE COMPRAS",
+   "label": "DESCRIPCI\u00d3N",
    "reqd": 1
   },
   {
-   "fieldname": "valor",
+   "fieldname": "actividad1",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "VALOR",
+   "label": "ACTIVIDAD 1",
    "reqd": 1
   },
   {
-   "fieldname": "dias",
-   "fieldtype": "Int",
+   "fieldname": "actividad2",
+   "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "# DIAS /SEMANAS",
+   "label": "ACTIVIDAD 2",
    "reqd": 1
   },
   {
    "fieldname": "total",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "TOTAL MENSUAL",
-   "read_only": 1,
+   "label": "TOTAL INGRESOS",
    "reqd": 1
   }
  ],
  "istable": 1,
- "modified": "2021-02-06 17:22:43.791417",
+ "modified": "2021-02-07 07:10:55.695248",
  "modified_by": "Administrator",
  "module": "Asecop",
- "name": "frecuencia_compras",
+ "name": "flujo_ingreso_gastos",
  "owner": "Administrator",
  "permissions": [],
  "quick_entry": 1,

@@ -33,21 +33,26 @@
    "reqd": 1
   },
   {
+   "default": "0",
    "fieldname": "utilidad",
-   "fieldtype": "Currency",
+   "fieldtype": "Percent",
    "in_list_view": 1,
    "label": "MARGEN UT.",
+   "read_only": 1,
    "reqd": 1
   },
   {
+   "default": "0",
    "fieldname": "costo",
-   "fieldtype": "Currency",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
    "label": "C.VENTA",
+   "read_only": 1,
    "reqd": 1
   }
  ],
  "istable": 1,
- "modified": "2021-01-27 17:33:57.040831",
+ "modified": "2021-02-06 16:36:27.829673",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "margen_ganancias",
