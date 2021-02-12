@@ -5,13 +5,25 @@ frappe.ui.form.on('hoja_trabajo', {
 	  refresh: function(frm) {
 		cur_frm.fields_dict["frecuencia_compras"].grid.wrapper.find('.grid-add-row').hide();
 		cur_frm.fields_dict["flujo_ingreso"].grid.wrapper.find('.grid-add-row').hide();
+		cur_frm.fields_dict["auxiliar_ventas"].grid.wrapper.find('.grid-add-row').hide();
+		cur_frm.fields_dict["auxiliar_ventas_sec"].grid.wrapper.find('.grid-add-row').hide();
 		//cur_frm.fields_dict["frecuencia_compras"].grid.add_custom_button('Add Time Slots');
 		 
   },
 onload(frm){
  
  //frm.get_field("frecuencia_compras").grid.only_sortable();
+
+ 
+
  if ( frm.is_new()) {
+	frm.add_child('auxiliar_ventas_sec', {frecuencia: 'VENTAS DIARIAS',	valor: 0,	tiempo:0,		total:0	});
+	frm.add_child('auxiliar_ventas_sec', {	frecuencia: 'VENTAS SEMANALES',	valor: 0,	tiempo:0,	total:0	});
+   frm.add_child('auxiliar_ventas_sec', {	frecuencia: 'VENTAS A CREDITO SEMANAL',	valor: 0,tiempo:0,total:0	});
+	frm.add_child('auxiliar_ventas', {frecuencia: 'VENTAS DIARIAS',	valor: 0,	tiempo:0,		total:0	});
+	frm.add_child('auxiliar_ventas', {	frecuencia: 'VENTAS SEMANALES',	valor: 0,	tiempo:0,	total:0	});
+   frm.add_child('auxiliar_ventas', {	frecuencia: 'VENTAS A CREDITO SEMANAL',	valor: 0,tiempo:0,total:0	});
+
 	frm.add_child('frecuencia_compras', {frecuencia: 'COMPRAS DIARIAS',	valor: 0,	dias:0,		total:0	});
    frm.add_child('frecuencia_compras', {	frecuencia: 'COMPRAS SEMANALES',	valor: 0,	dias:0,	total:0	});
   frm.add_child('frecuencia_compras', {	frecuencia: 'COMPRA A CREDITO SEMANAL',	valor: 0,dias:0,total:0	});
@@ -191,6 +203,27 @@ frappe.ui.form.on("cuenta_por_cobrar", {
 		calcular_productos_aux_compras();
 	} 
   });
+
+  frappe.ui.form.on("auxiliar_ventas_sec", {	
+	valor (frm, cdt, cdn) { 		 
+		calcular_auxiliar_ventas_sec();
+	} ,
+	tiempo (frm, cdt, cdn) { 		 
+		calcular_auxiliar_ventas_sec();
+	  }
+  });
+
+
+  function calcular_auxiliar_ventas_sec (){
+	var t_total=0;	 
+	$.each(cur_frm.doc.auxiliar_ventas_sec, function(i, row) {  
+		  var s_total  = row.valor * row.tiempo;	
+		  row.total = s_total;
+		  t_total+=s_total;
+	  });	
+	  cur_frm.doc.auxiliar_ventas_sec_total =  t_total; 
+	  cur_frm.refresh_fields();
+}
 
 
   function calcular_productos_aux_compras(){

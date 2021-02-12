@@ -32,10 +32,12 @@
   "total_inicial",
   "total_saldo",
   "sec_inventario",
+  "html_27",
   "mercaderia",
   "total_inventario_html",
   "total_inventario",
   "sec_acfij",
+  "html_32",
   "total_activosfijneg",
   "muebles_enseres",
   "total_mueblesensereshtml",
@@ -53,6 +55,7 @@
   "total_otrosactivos_html",
   "total_otrosactivos",
   "sec_aux",
+  "html_50",
   "cuentasporcobrar",
   "total_cuentasporcobrar",
   "total_cuentasporcobrar_html",
@@ -70,29 +73,32 @@
   "total_activos_familiares_html",
   "total_activos_familiares",
   "sec_auxfamil",
+  "html_68",
+  "html_69",
   "actividad_principal",
+  "html_71",
   "auxiliar_ventas",
   "total_auxiliar_ventas",
   "total_auxiliar_ventas_html",
   "sec_flujo",
   "enero",
-  "julio",
+  "febrero",
   "meses_promedio",
   "column_break_41",
-  "febrero",
-  "agosto",
+  "marzo",
+  "abril",
   "meses_total",
   "column_break_43",
-  "marzo",
-  "septiembre",
+  "mayo",
+  "junio",
+  "column_break_49",
+  "julio",
+  "agosto",
   "column_break_45",
-  "abril",
+  "septiembre",
   "octubre",
   "column_break_47",
-  "mayo",
   "noviembre",
-  "column_break_49",
-  "junio",
   "diciembre",
   "sec_",
   "margen_ganancias",
@@ -100,16 +106,45 @@
   "promedio_costo",
   "html_promedio_uticos",
   "sec_auxcompras",
+  "html_101",
   "frecuencia_compras",
   "productos_aux_compras",
   "total_productos_aux_compras",
   "html_productos_aux_compras",
   "sec_flujos",
   "naming_series",
+  "section_break_108",
+  "html_109",
+  "actividad_secundaria",
+  "html_111",
+  "auxiliar_ventas_sec",
+  "auxiliar_ventas_sec_total",
+  "auxiliar_ventas_sec_html",
+  "section_break_115",
+  "enero_s",
+  "febrero_s",
+  "promedio_s",
+  "column_break_118",
+  "marzo_s",
+  "abril_s",
+  "total_s",
+  "column_break_121",
+  "mayo_s",
+  "junio_s",
+  "section_break_124",
+  "julio_s",
+  "agosto_s",
+  "column_break_127",
+  "septiembre_s",
+  "octubre_s",
+  "column_break_130",
+  "noviembre_s",
+  "diciembre_s",
   "section_break_101",
   "htmltitulo11",
   "flujo_ingreso",
-  "flujo_ingreso_gastos"
+  "flujo_ingreso_gastos",
+  "data_114"
  ],
  "fields": [
   {
@@ -220,8 +255,7 @@
   },
   {
    "fieldname": "sec_inventario",
-   "fieldtype": "Section Break",
-   "label": "ACTIVO CORRIENTE - INVENTARIO"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "maquinaria_equipo",
@@ -243,8 +277,7 @@
   },
   {
    "fieldname": "sec_acfij",
-   "fieldtype": "Section Break",
-   "label": "ACTIVOS FIJOS DE NEGOCIO"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "otro_activos",
@@ -254,8 +287,7 @@
   },
   {
    "fieldname": "sec_aux",
-   "fieldtype": "Section Break",
-   "label": "AUXILIAR DE PASIVOS"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "cuentasporcobrar",
@@ -294,19 +326,16 @@
   },
   {
    "fieldname": "sec_auxfamil",
-   "fieldtype": "Section Break",
-   "label": "AUXILIAR PARA EL ESTADO DE RESULTADOS"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "actividad_principal",
    "fieldtype": "Data",
-   "label": "ACTIVIDAD PRINCIPAL",
-   "reqd": 1
+   "label": "Detalle de la actividad"
   },
   {
    "fieldname": "auxiliar_ventas",
    "fieldtype": "Table",
-   "label": "AUXILIAR DE VENTAS",
    "options": "auxiliar_ventas"
   },
   {
@@ -315,31 +344,37 @@
    "label": "FLUJO DE VENTAS POR MES "
   },
   {
+   "default": "0",
    "fieldname": "enero",
    "fieldtype": "Currency",
    "label": "ENERO"
   },
   {
+   "default": "0",
    "fieldname": "febrero",
    "fieldtype": "Currency",
    "label": "FEBRERO"
   },
   {
+   "default": "0",
    "fieldname": "marzo",
    "fieldtype": "Currency",
    "label": "MARZO"
   },
   {
+   "default": "0",
    "fieldname": "abril",
    "fieldtype": "Currency",
    "label": "ABRIL"
   },
   {
+   "default": "0",
    "fieldname": "mayo",
    "fieldtype": "Currency",
    "label": "MAYO"
   },
   {
+   "default": "0",
    "fieldname": "junio",
    "fieldtype": "Currency",
    "label": "JUNIO"
@@ -365,31 +400,37 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "0",
    "fieldname": "julio",
    "fieldtype": "Currency",
    "label": "JULIO"
   },
   {
+   "default": "0",
    "fieldname": "agosto",
    "fieldtype": "Currency",
    "label": "AGOSTO"
   },
   {
+   "default": "0",
    "fieldname": "septiembre",
    "fieldtype": "Currency",
    "label": "SEPTIEMBRE"
   },
   {
+   "default": "0",
    "fieldname": "octubre",
    "fieldtype": "Currency",
    "label": "OCTUBRE"
   },
   {
+   "default": "0",
    "fieldname": "noviembre",
    "fieldtype": "Currency",
    "label": "NOVIEMBRE"
   },
   {
+   "default": "0",
    "fieldname": "diciembre",
    "fieldtype": "Currency",
    "label": "DICIEMBRE"
@@ -406,8 +447,7 @@
   },
   {
    "fieldname": "sec_auxcompras",
-   "fieldtype": "Section Break",
-   "label": "AUXILIAR DE COMPRAS"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "frecuencia_compras",
@@ -486,6 +526,7 @@
    "read_only": 1
   },
   {
+   "default": "0",
    "fieldname": "total_mueblesenseres",
    "fieldtype": "Currency",
    "hidden": 1
@@ -513,6 +554,7 @@
    "options": "Total Muebles y Enseres:{{doc.total_maquinaria}}"
   },
   {
+   "default": "0",
    "fieldname": "total_maquinaria",
    "fieldtype": "Currency",
    "hidden": 1
@@ -568,7 +610,7 @@
   {
    "fieldname": "total_auxiliar_ventas_html",
    "fieldtype": "HTML",
-   "options": "Total otros activos:{{doc.total_auxiliar_ventas}}"
+   "options": "Total Ventas:{{doc.total_auxiliar_ventas}}"
   },
   {
    "default": "0",
@@ -657,7 +699,7 @@
   {
    "fieldname": "htmltitulo11",
    "fieldtype": "HTML",
-   "options": "<div style=\"background-color: red;\"> FLUJO DE INGRESOS POR ACTIVIDAD </div>"
+   "options": "<div style=\"background-color: #E6B0AA; font-weight: bold;\"> FLUJO DE INGRESOS POR ACTIVIDAD </div>"
   },
   {
    "fieldname": "flujo_ingreso",
@@ -670,9 +712,190 @@
    "fieldtype": "Table",
    "label": "GASTOS DEL NEGOCIO",
    "options": "flujo_ingreso_gastos"
+  },
+  {
+   "fieldname": "html_27",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: #E6B0AA; font-weight: bold;\"> INVENTARIO</div>"
+  },
+  {
+   "fieldname": "html_32",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: #E6B0AA; font-weight: bold;\"> ACTIVOS FIJOS DE NEGOCIO </div>"
+  },
+  {
+   "fieldname": "html_50",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: #E6B0AA; font-weight: bold;\"> AUXILIAR DE PASIVOS </div>"
+  },
+  {
+   "fieldname": "html_68",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: #FAD7A0 ; font-weight: bold;\"> AUXILIAR PARA EL ESTADO DE RESULTADOS </div>"
+  },
+  {
+   "fieldname": "html_71",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: #21618C ; color: white; width: 100%;\"> \n<table width=\"100%\"> <tbody><tr> <td>  AUXILIAR DE VENTAS </td> <td style=\"text-align: right;\"> ACTIVIDAD PRINCIPAL</td> </tr>  </tbody></table>\n</div>\n\n\n"
+  },
+  {
+   "fieldname": "html_69",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: #21618C ; color: white; font-weight: bold;\"> ACTIVIDAD PRINCIPAL  </div>"
+  },
+  {
+   "fieldname": "html_101",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: #21618C ; color: white; width: 100%;\"> \n<table width=\"100%\"> <tbody><tr> <td>  AUXILIAR DE COMPRAS  </td> <td style=\"text-align: right;\">  ACTIVIDAD PRINCIPAL </td> </tr>  </tbody></table>\n</div>\n\n"
+  },
+  {
+   "fieldname": "section_break_108",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "html_109",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: #D0ECE7 ; font-weight: bold;\"> ACTIVIDAD SECUNDARIA</div>"
+  },
+  {
+   "fieldname": "data_114",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "actividad_secundaria",
+   "fieldtype": "Data",
+   "label": "Detalle de la Actividad"
+  },
+  {
+   "fieldname": "html_111",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: #D0ECE7 ; width: 100%;\"> \n<table width=\"100%\"> <tbody><tr> <td>  AUXILIAR DE VENTAS </td> <td style=\"text-align: right;\"> ACTIVIDAD SECUNDARIA</td> </tr>  </tbody></table>\n</div>\n"
+  },
+  {
+   "fieldname": "auxiliar_ventas_sec",
+   "fieldtype": "Table",
+   "options": "auxiliar_ventas_sec"
+  },
+  {
+   "default": "0",
+   "fieldname": "auxiliar_ventas_sec_total",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "fieldname": "auxiliar_ventas_sec_html",
+   "fieldtype": "HTML",
+   "options": "Total:{{doc.auxiliar_ventas_sec_total}}"
+  },
+  {
+   "fieldname": "section_break_115",
+   "fieldtype": "Section Break",
+   "label": "FLUJO DE VENTAS POR MES "
+  },
+  {
+   "default": "0",
+   "fieldname": "enero_s",
+   "fieldtype": "Currency",
+   "label": "Enero"
+  },
+  {
+   "default": "0",
+   "fieldname": "febrero_s",
+   "fieldtype": "Currency",
+   "label": "Febrero"
+  },
+  {
+   "fieldname": "column_break_118",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "marzo_s",
+   "fieldtype": "Currency",
+   "label": "Marzo"
+  },
+  {
+   "default": "0",
+   "fieldname": "abril_s",
+   "fieldtype": "Currency",
+   "label": "Abril"
+  },
+  {
+   "default": "0",
+   "fieldname": "column_break_121",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "mayo_s",
+   "fieldtype": "Currency",
+   "label": "Mayo"
+  },
+  {
+   "fieldname": "junio_s",
+   "fieldtype": "Currency",
+   "label": "Junio"
+  },
+  {
+   "fieldname": "section_break_124",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "julio_s",
+   "fieldtype": "Currency",
+   "label": "Julio"
+  },
+  {
+   "default": "0",
+   "fieldname": "agosto_s",
+   "fieldtype": "Currency",
+   "label": "Agosto"
+  },
+  {
+   "fieldname": "column_break_127",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "septiembre_s",
+   "fieldtype": "Currency",
+   "label": "Septiembre"
+  },
+  {
+   "fieldname": "octubre_s",
+   "fieldtype": "Currency",
+   "label": "Octubre"
+  },
+  {
+   "fieldname": "column_break_130",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "noviembre_s",
+   "fieldtype": "Currency",
+   "label": "Noviembre"
+  },
+  {
+   "fieldname": "diciembre_s",
+   "fieldtype": "Currency",
+   "label": "Diciembre"
+  },
+  {
+   "default": "0",
+   "fieldname": "promedio_s",
+   "fieldtype": "Currency",
+   "label": "Promedio",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_s",
+   "fieldtype": "Currency",
+   "label": "Total",
+   "read_only": 1
   }
  ],
- "modified": "2021-02-07 07:11:43.020563",
+ "modified": "2021-02-11 08:59:56.119820",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
