@@ -141,6 +141,10 @@
   "noviembre_s",
   "diciembre_s",
   "section_break_101",
+  "margen_ganancias_sec",
+  "hmlt111",
+  "data_138",
+  "section_break_137",
   "htmltitulo11",
   "flujo_ingreso",
   "flujo_ingreso_gastos",
@@ -893,9 +897,28 @@
    "fieldtype": "Currency",
    "label": "Total",
    "read_only": 1
+  },
+  {
+   "fieldname": "margen_ganancias_sec",
+   "fieldtype": "Table",
+   "label": "MARGEN DE GANANCIA Y COSTO DE VENTAS",
+   "options": "margen_ganancias_sec"
+  },
+  {
+   "fieldname": "section_break_137",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "hmlt111",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: #D0ECE7  ; width: 100%;\"> \n<table width=\"100%\"> <tbody><tr> <td>  AUXILIAR DE COMPRAS  </td> <td style=\"text-align: right;\">  ACTIVIDAD PRINCIPAL </td> </tr>  </tbody></table>\n</div>"
+  },
+  {
+   "fieldname": "data_138",
+   "fieldtype": "Data"
   }
  ],
- "modified": "2021-02-11 08:59:56.119820",
+ "modified": "2021-02-15 18:13:41.970250",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
