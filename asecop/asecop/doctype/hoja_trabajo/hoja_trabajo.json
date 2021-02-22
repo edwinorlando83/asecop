@@ -83,23 +83,22 @@
   "sec_flujo",
   "enero",
   "febrero",
-  "meses_promedio",
-  "column_break_41",
   "marzo",
+  "column_break_41",
   "abril",
-  "meses_total",
-  "column_break_43",
   "mayo",
   "junio",
-  "column_break_49",
+  "column_break_43",
   "julio",
   "agosto",
-  "column_break_45",
   "septiembre",
+  "column_break_49",
   "octubre",
-  "column_break_47",
   "noviembre",
   "diciembre",
+  "column_break_45",
+  "meses_promedio",
+  "meses_total",
   "sec_",
   "margen_ganancias",
   "promedio_utilidad",
@@ -123,32 +122,63 @@
   "section_break_115",
   "enero_s",
   "febrero_s",
-  "promedio_s",
-  "column_break_118",
   "marzo_s",
+  "column_break_118",
   "abril_s",
-  "total_s",
-  "column_break_121",
   "mayo_s",
   "junio_s",
-  "section_break_124",
+  "column_break_121",
   "julio_s",
   "agosto_s",
-  "column_break_127",
   "septiembre_s",
+  "section_break_124",
   "octubre_s",
-  "column_break_130",
   "noviembre_s",
   "diciembre_s",
+  "column_break_127",
+  "promedio_s",
+  "total_s",
   "section_break_101",
   "margen_ganancias_sec",
+  "promedio_utilidad_s",
+  "promedio_costo_s",
+  "html_margengan_s",
   "hmlt111",
-  "data_138",
+  "frecuencia_compras_sec",
+  "total_fc_s",
+  "htmltotal_fc_s",
+  "productos_aux_compras_sec",
+  "total_aux_com_sec",
+  "htmltotal_aux_com_sec",
   "section_break_137",
   "htmltitulo11",
-  "flujo_ingreso",
+  "section_break_147",
+  "actividad_1",
+  "ingventas_act1",
+  "compras_act1",
+  "costo_act1",
+  "ingre_act1",
+  "gastos_act1",
+  "column_break_152",
+  "actividad_2",
+  "ingventas_act2",
+  "compras_act2",
+  "costo_act2",
+  "ingre_act2",
+  "gastos_act2",
+  "column_break_157",
+  "total_ingresos",
+  "ingventas_act3",
+  "compras_act3",
+  "costo_act3",
+  "ingre_act3",
+  "gastos_act3",
+  "section_break_157",
   "flujo_ingreso_gastos",
-  "data_114"
+  "sec00005",
+  "htmlsec11",
+  "flujo_ingresos_integral",
+  "gastos_familiares"
  ],
  "fields": [
   {
@@ -345,7 +375,7 @@
   {
    "fieldname": "sec_flujo",
    "fieldtype": "Section Break",
-   "label": "FLUJO DE VENTAS POR MES "
+   "label": "FLUJO DE VENTAS POR MES  (ACTIVIDAD PRINCIPAL)"
   },
   {
    "default": "0",
@@ -396,10 +426,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break_47",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "column_break_49",
    "fieldtype": "Column Break"
   },
@@ -446,7 +472,7 @@
   {
    "fieldname": "margen_ganancias",
    "fieldtype": "Table",
-   "label": "MARGEN DE GANANCIA Y COSTO DE VENTAS",
+   "label": "MARGEN DE GANANCIA Y COSTO DE VENTAS (ACTIVIDAD PRINCIPAL)",
    "options": "margen_ganancias"
   },
   {
@@ -706,12 +732,6 @@
    "options": "<div style=\"background-color: #E6B0AA; font-weight: bold;\"> FLUJO DE INGRESOS POR ACTIVIDAD </div>"
   },
   {
-   "fieldname": "flujo_ingreso",
-   "fieldtype": "Table",
-   "label": "INGRESOS DEL NEGOCIO",
-   "options": "flujo_ingreso"
-  },
-  {
    "fieldname": "flujo_ingreso_gastos",
    "fieldtype": "Table",
    "label": "GASTOS DEL NEGOCIO",
@@ -762,10 +782,6 @@
    "options": "<div style=\"background-color: #D0ECE7 ; font-weight: bold;\"> ACTIVIDAD SECUNDARIA</div>"
   },
   {
-   "fieldname": "data_114",
-   "fieldtype": "Data"
-  },
-  {
    "fieldname": "actividad_secundaria",
    "fieldtype": "Data",
    "label": "Detalle de la Actividad"
@@ -794,7 +810,7 @@
   {
    "fieldname": "section_break_115",
    "fieldtype": "Section Break",
-   "label": "FLUJO DE VENTAS POR MES "
+   "label": "FLUJO DE VENTAS POR MES  (ACTIVIDAD SECUNDARIA)"
   },
   {
    "default": "0",
@@ -871,10 +887,6 @@
    "label": "Octubre"
   },
   {
-   "fieldname": "column_break_130",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "noviembre_s",
    "fieldtype": "Currency",
    "label": "Noviembre"
@@ -901,7 +913,7 @@
   {
    "fieldname": "margen_ganancias_sec",
    "fieldtype": "Table",
-   "label": "MARGEN DE GANANCIA Y COSTO DE VENTAS",
+   "label": "MARGEN DE GANANCIA Y COSTO DE VENTAS (ACTIVIDAD SECUNDARIA)",
    "options": "margen_ganancias_sec"
   },
   {
@@ -911,14 +923,197 @@
   {
    "fieldname": "hmlt111",
    "fieldtype": "HTML",
-   "options": "<div style=\"background-color: #D0ECE7  ; width: 100%;\"> \n<table width=\"100%\"> <tbody><tr> <td>  AUXILIAR DE COMPRAS  </td> <td style=\"text-align: right;\">  ACTIVIDAD PRINCIPAL </td> </tr>  </tbody></table>\n</div>"
+   "options": "<div style=\"background-color: #D0ECE7  ; width: 100%;\"> \n<table width=\"100%\"> <tbody><tr> <td>  AUXILIAR DE COMPRAS  </td> <td style=\"text-align: right;\">  ACTIVIDAD SECUNDARIA </td> </tr>  </tbody></table>\n</div>"
   },
   {
-   "fieldname": "data_138",
-   "fieldtype": "Data"
+   "fieldname": "frecuencia_compras_sec",
+   "fieldtype": "Table",
+   "options": "frecuencia_compras_sec"
+  },
+  {
+   "fieldname": "productos_aux_compras_sec",
+   "fieldtype": "Table",
+   "options": "productos_aux_compras_sec"
+  },
+  {
+   "fieldname": "sec00005",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "htmlsec11",
+   "fieldtype": "HTML",
+   "options": "<div style=\"background-color: #E6B0AA; font-weight: bold;\"> FLUJO DE INGRESOS INTEGRAL(TRABAJO O NEGOCIO)</div>"
+  },
+  {
+   "fieldname": "flujo_ingresos_integral",
+   "fieldtype": "Table",
+   "options": "flujo_ingresos_integral"
+  },
+  {
+   "fieldname": "gastos_familiares",
+   "fieldtype": "Table",
+   "options": "gastos_familiares"
+  },
+  {
+   "fieldname": "promedio_utilidad_s",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "fieldname": "promedio_costo_s",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "fieldname": "html_margengan_s",
+   "fieldtype": "HTML",
+   "options": "Promedio Utilidad:{{doc.promedio_utilidad_s}}  Promedio Costo:{{doc.promedio_costo_s}}"
+  },
+  {
+   "fieldname": "total_fc_s",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "fieldname": "htmltotal_fc_s",
+   "fieldtype": "HTML",
+   "options": "Total:{{doc.total_fc_s}}"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_aux_com_sec",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "fieldname": "htmltotal_aux_com_sec",
+   "fieldtype": "HTML",
+   "options": "Total:{{doc.total_aux_com_sec}}"
+  },
+  {
+   "fieldname": "section_break_147",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "actividad_1",
+   "fieldtype": "Heading",
+   "label": "ACTIVIDAD 1"
+  },
+  {
+   "fieldname": "ingventas_act1",
+   "fieldtype": "Currency",
+   "label": "Ingreso por ventas."
+  },
+  {
+   "fieldname": "compras_act1",
+   "fieldtype": "Currency",
+   "label": "Compras"
+  },
+  {
+   "fieldname": "costo_act1",
+   "fieldtype": "Currency",
+   "label": "Costo de Ventas",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_152",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actividad_2",
+   "fieldtype": "Heading",
+   "label": "ACTIVIDAD 2"
+  },
+  {
+   "fieldname": "ingventas_act2",
+   "fieldtype": "Currency",
+   "label": "Ingreso por ventas."
+  },
+  {
+   "fieldname": "compras_act2",
+   "fieldtype": "Currency",
+   "label": "Compras"
+  },
+  {
+   "default": "0",
+   "fieldname": "costo_act2",
+   "fieldtype": "Currency",
+   "label": "Costo de Ventas",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_157",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_ingresos",
+   "fieldtype": "Heading",
+   "label": "TOTAL INGRESOS"
+  },
+  {
+   "fieldname": "ingventas_act3",
+   "fieldtype": "Currency",
+   "label": "Ingreso por ventas."
+  },
+  {
+   "fieldname": "compras_act3",
+   "fieldtype": "Currency",
+   "label": "Compras"
+  },
+  {
+   "default": "0",
+   "fieldname": "costo_act3",
+   "fieldtype": "Currency",
+   "label": "Costo de Ventas",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_157",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "ingre_act1",
+   "fieldtype": "Currency",
+   "label": "INGRESOS DEL NEGOCIO",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "gastos_act1",
+   "fieldtype": "Currency",
+   "label": "GASTOS DEL NEGOCIO",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ingre_act2",
+   "fieldtype": "Currency",
+   "label": "INGRESOS DEL NEGOCIO",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "gastos_act2",
+   "fieldtype": "Currency",
+   "label": "GASTOS DEL NEGOCIO",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "ingre_act3",
+   "fieldtype": "Currency",
+   "label": "INGRESOS DEL NEGOCIO",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "gastos_act3",
+   "fieldtype": "Currency",
+   "label": "GASTOS DEL NEGOCIO",
+   "read_only": 1
   }
  ],
- "modified": "2021-02-15 18:13:41.970250",
+ "modified": "2021-02-22 05:10:25.406958",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
