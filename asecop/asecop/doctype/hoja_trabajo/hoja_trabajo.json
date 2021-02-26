@@ -178,7 +178,11 @@
   "sec00005",
   "htmlsec11",
   "flujo_ingresos_integral",
-  "gastos_familiares"
+  "html_flujo_ingresos_integral",
+  "gastos_familiares",
+  "html_gastos_familiares",
+  "total_flujo_ingresos_integral",
+  "total_gastos_familiares"
  ],
  "fields": [
   {
@@ -1051,14 +1055,18 @@
    "label": "TOTAL INGRESOS"
   },
   {
+   "default": "0",
    "fieldname": "ingventas_act3",
    "fieldtype": "Currency",
-   "label": "Ingreso por ventas."
+   "label": "Ingreso por ventas.",
+   "read_only": 1
   },
   {
+   "default": "0",
    "fieldname": "compras_act3",
    "fieldtype": "Currency",
-   "label": "Compras"
+   "label": "Compras",
+   "read_only": 1
   },
   {
    "default": "0",
@@ -1111,9 +1119,31 @@
    "fieldtype": "Currency",
    "label": "GASTOS DEL NEGOCIO",
    "read_only": 1
+  },
+  {
+   "fieldname": "html_flujo_ingresos_integral",
+   "fieldtype": "HTML",
+   "options": "Total:{{doc.total_flujo_ingresos_integral}}"
+  },
+  {
+   "fieldname": "html_gastos_familiares",
+   "fieldtype": "HTML",
+   "options": "Total:{{doc.total_gastos_familiares}}"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_flujo_ingresos_integral",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_gastos_familiares",
+   "fieldtype": "Currency",
+   "hidden": 1
   }
  ],
- "modified": "2021-02-22 05:10:25.406958",
+ "modified": "2021-02-26 07:22:16.899173",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
