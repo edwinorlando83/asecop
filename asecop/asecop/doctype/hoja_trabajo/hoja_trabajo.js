@@ -492,9 +492,11 @@ function calcular_otros_pasivos() {
 }
 function calcular_prestamos_largoplazo() {
 	var t_total = 0;
+	var t_total_cuotas = 0;
 	$.each(cur_frm.doc.prestamos_largoplazo, function (i, row) {
 
 		t_total += row.saldo;
+		 
 	});
 	cur_frm.doc.total_prestamolargo = t_total;
 	cur_frm.refresh_fields();

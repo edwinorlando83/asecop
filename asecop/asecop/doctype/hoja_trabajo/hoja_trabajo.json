@@ -182,7 +182,27 @@
   "gastos_familiares",
   "html_gastos_familiares",
   "total_flujo_ingresos_integral",
-  "total_gastos_familiares"
+  "total_gastos_familiares",
+  "section_break_178",
+  "tt_ingresonetouf",
+  "tt_pagocuotas",
+  "tt_flujointegral",
+  "section_break_182",
+  "html_indicadores",
+  "rt_corrientes",
+  "rt_fijos",
+  "rt_activos_negocio",
+  "rt_activos_socio",
+  "rt_pasivo_cp",
+  "rt_pasivo_lp",
+  "rt_pasivo",
+  "rt_patrimonio_neg",
+  "rt_patrimonio_fam",
+  "rt_pasivo_patrimanio",
+  "i_liquidez",
+  "i_endeuda",
+  "i_endeuda_f",
+  "i_razon_cuota"
  ],
  "fields": [
   {
@@ -585,7 +605,7 @@
   {
    "fieldname": "total_maquinaria_html",
    "fieldtype": "HTML",
-   "options": "Total Muebles y Enseres:{{doc.total_maquinaria}}"
+   "options": "Total Maquinaria y Equipo:{{doc.total_maquinaria}}"
   },
   {
    "default": "0",
@@ -1141,9 +1161,131 @@
    "fieldname": "total_gastos_familiares",
    "fieldtype": "Currency",
    "hidden": 1
+  },
+  {
+   "fieldname": "section_break_178",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "html_indicadores",
+   "fieldtype": "HTML",
+   "options": "<table border=\"1\" style=\"width: 100%;\">\n<tbody><tr style=\"background-color: #F6F6F6;\">\n<td> INDICADORES </td>\n<td colspan=\"2\"> REFERENCIALES</td>\n<td> REALES</td>\n<td>  </td>\n</tr>\n\n<tr>\n<td> \u00cdNDICE DE LIQUIDEZ (pasivos c/activos c) </td>\n<td colspan=\"2\"> 100%\tMAXIMO </td>\n<td>{{doc.i_liquidez}}  </td>\n<td>  </td>\n</tr>\n\n<tr>\n<td> \u00cdNDICE DE ENDEUDAMIENTO </td>\n<td colspan=\"2\"> 100%\tMAXIMO </td>\n<td> {{doc.i_endeuda}}  </td> <td>  </td>\n</tr>\n\n<tr>\n<td>\u00cdNDICE DE ENDEUDAMIENTO FUTURO</td>\n<td colspan=\"2\"> 200%\tMAXIMO </td>\n<td>   {{doc.i_endeuda_f}}  </td><td>  </td>\n</tr>\n\n<tr>\n<td> RAZ\u00d3N CUOTA </td>\n<td colspan=\"2\"> 85%\tMAXIMO </td>\n<td>   {{doc.i_razon_cuota}}  </td><td>  </td>\n</tr>\n</tbody></table>"
+  },
+  {
+   "fieldname": "rt_corrientes",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "rt_corrientes"
+  },
+  {
+   "fieldname": "rt_fijos",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "rt_fijos"
+  },
+  {
+   "fieldname": "rt_activos_negocio",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "rt_activos_negocio"
+  },
+  {
+   "fieldname": "rt_activos_socio",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "rt_activos_socio"
+  },
+  {
+   "fieldname": "rt_pasivo_cp",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "rt_pasivo_cp"
+  },
+  {
+   "fieldname": "rt_pasivo_lp",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "rt_pasivo_lp"
+  },
+  {
+   "fieldname": "rt_pasivo",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "rt_pasivo"
+  },
+  {
+   "fieldname": "rt_patrimonio_neg",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "rt_patrimonio_neg"
+  },
+  {
+   "fieldname": "rt_patrimonio_fam",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "rt_patrimonio_fam"
+  },
+  {
+   "fieldname": "rt_pasivo_patrimanio",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "rt_pasivo_patrimanio"
+  },
+  {
+   "default": "0",
+   "fieldname": "tt_ingresonetouf",
+   "fieldtype": "Currency",
+   "label": "Ingreso Neto Unidad Familiar",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "tt_pagocuotas",
+   "fieldtype": "Currency",
+   "label": "Pago de cuotas",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "tt_flujointegral",
+   "fieldtype": "Currency",
+   "label": "FLUJO INTEGRAL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_182",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "i_liquidez",
+   "fieldtype": "Percent",
+   "hidden": 1,
+   "label": "i_liquidez"
+  },
+  {
+   "default": "0",
+   "fieldname": "i_endeuda",
+   "fieldtype": "Percent",
+   "hidden": 1,
+   "label": "i_endeuda"
+  },
+  {
+   "default": "0",
+   "fieldname": "i_endeuda_f",
+   "fieldtype": "Percent",
+   "hidden": 1,
+   "label": "i_endeuda_f"
+  },
+  {
+   "default": "0",
+   "fieldname": "i_razon_cuota",
+   "fieldtype": "Percent",
+   "hidden": 1,
+   "label": "i_razon_cuota"
   }
  ],
- "modified": "2021-02-26 07:22:16.899173",
+ "modified": "2021-02-28 15:04:22.514828",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
