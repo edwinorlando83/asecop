@@ -16,6 +16,15 @@ frappe.ui.form.on('hoja_trabajo', {
 	},
 	onload(frm) {
 
+		frm.set_query("asesor", function( ) {  
+			return {
+				 filters: {
+				  agencias: frm.doc.agencias 
+				}
+			  };
+			});
+
+
 		//frm.get_field("frecuencia_compras").grid.only_sortable();
 		if (frm.is_new()) {
 			frm.add_child('auxiliar_ventas_sec', { frecuencia: 'VENTAS DIARIAS', valor: 0, tiempo: 0, total: 0 });
