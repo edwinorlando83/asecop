@@ -545,6 +545,7 @@
    "read_only": 1
   },
   {
+   "default": "0",
    "fieldname": "total_saldo",
    "fieldtype": "Currency",
    "hidden": 1,
@@ -567,6 +568,7 @@
    "options": "Total: {{doc.total_inventario}}"
   },
   {
+   "default": "0",
    "fieldname": "total_inventario",
    "fieldtype": "Currency",
    "hidden": 1,
@@ -652,6 +654,7 @@
    "options": "Total otros activos:{{doc.total_activos_familiares}}"
   },
   {
+   "default": "0",
    "fieldname": "total_activos_familiares",
    "fieldtype": "Currency",
    "hidden": 1
@@ -681,6 +684,7 @@
    "read_only": 1
   },
   {
+   "default": "0",
    "fieldname": "total_cuentasporcobrar",
    "fieldtype": "Currency",
    "hidden": 1
@@ -691,6 +695,7 @@
    "options": "Total cuentas por pagar: {{doc.total_cuentasporcobrar}}"
   },
   {
+   "default": "0",
    "fieldname": "total_prestamos",
    "fieldtype": "Currency",
    "hidden": 1
@@ -711,6 +716,7 @@
    "options": "Total Prestamos a largo plazo: {{doc.total_prestamolargo}}"
   },
   {
+   "default": "0",
    "fieldname": "total_otros_pasivos",
    "fieldtype": "Currency",
    "hidden": 1
@@ -1184,6 +1190,7 @@
    "label": "rt_fijos"
   },
   {
+   "default": "0",
    "fieldname": "rt_activos_negocio",
    "fieldtype": "Currency",
    "hidden": 1,
@@ -1196,18 +1203,21 @@
    "label": "rt_activos_socio"
   },
   {
+   "default": "0",
    "fieldname": "rt_pasivo_cp",
    "fieldtype": "Currency",
    "hidden": 1,
    "label": "rt_pasivo_cp"
   },
   {
+   "default": "0",
    "fieldname": "rt_pasivo_lp",
    "fieldtype": "Currency",
    "hidden": 1,
    "label": "rt_pasivo_lp"
   },
   {
+   "default": "0",
    "fieldname": "rt_pasivo",
    "fieldtype": "Currency",
    "hidden": 1,
@@ -1285,7 +1295,7 @@
    "label": "i_razon_cuota"
   }
  ],
- "modified": "2021-02-28 15:04:22.514828",
+ "modified": "2021-03-03 16:45:58.460365",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",

@@ -15,6 +15,11 @@ class hoja_trabajo(Document):
 		self.rt_activos_socio =  self.rt_activos_negocio + self.total_activos_familiares 
 		self.rt_pasivo_cp = self.total_cuentasporcobrar + self.total_prestamos + self.total_otros_pasivos
 		self.rt_pasivo_lp = self.total_prestamolargo
+		if  self.rt_pasivo_cp is None:
+			self.rt_pasivo_cp = 0 
+		if  self.rt_pasivo_lp is None:
+			self.rt_pasivo_lp = 0 
+
 		self.rt_pasivo = self.rt_pasivo_cp + self.rt_pasivo_lp
 		self.tt_ingresonetouf = self.ingre_act3 - self.gastos_act3 + self.flujo_ingresos_integral[1].valor + self.flujo_ingresos_integral[2].valor + self.flujo_ingresos_integral[3].valor+ self.flujo_ingresos_integral[4].valor - self.total_gastos_familiares
 		sumacuotas=0.0
@@ -26,7 +31,9 @@ class hoja_trabajo(Document):
 		self.i_liquidez = round(self.rt_pasivo_cp /  self.rt_corrientes *100,2)
 		self.i_endeuda =  round(self.rt_pasivo  / (self.rt_activos_socio  - self.rt_pasivo ) *100,2)
 		self.i_endeuda_f = round((  self.rt_pasivo + self.monto) / (self.rt_activos_socio  - self.rt_pasivo )  *100,2)
-		self.i_razon_cuota = round(self.cuota / self.tt_flujointegral * 100,2)
+		
+		if self.tt_flujointegral > 0:
+			self.i_razon_cuota = round(self.cuota / self.tt_flujointegral * 100,2)
 
 
 
