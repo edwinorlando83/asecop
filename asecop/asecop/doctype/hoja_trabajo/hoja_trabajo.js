@@ -112,7 +112,7 @@ frappe.ui.form.on('hoja_trabajo', {
 		calcular_1act(frm);
 		calcular_ingresos_del_negocio(frm);
 	},
-	 ingventas_act1(frm){
+	 ingventas_act2(frm){
 		calcular_1act2(frm);
 		 
 	}
@@ -143,6 +143,8 @@ function calcular_gastos_total(frm){
 
 function calcular_1act(frm){
 	frm.doc.costo_act1 =  frm.doc.promedio_costo  * frm.doc.ingventas_act1/100;
+	console.log(' romedio_costo ' + frm.doc.promedio_costo);
+	console.log(' ingventas_act1 ' + frm.doc.ingventas_act1);
 	frm.refresh_fields ();
 }
 function calcular_1act2(frm){
