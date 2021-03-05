@@ -1,4 +1,5 @@
 {
+ "allow_rename": 1,
  "autoname": "field:nombre",
  "creation": "2021-01-26 19:25:43.068499",
  "doctype": "DocType",
@@ -7,8 +8,21 @@
  "field_order": [
   "nombre",
   "cedula",
+  "fecha_nac",
   "telefono",
+  "genero",
+  "lugar_nac",
   "foto",
+  "column_break_6",
+  "actividadsocio",
+  "experienciasocio",
+  "datos_del_c\u00f3nyuge_section",
+  "nombreconyuge",
+  "cedulaconyuge",
+  "column_break_12",
+  "actividadconyuge",
+  "experienciaconyuge",
+  "ubicaci\u00f3n_del_socio_section",
   "ubicacion"
  ],
  "fields": [
@@ -28,7 +42,7 @@
   {
    "fieldname": "telefono",
    "fieldtype": "Data",
-   "label": "telefono"
+   "label": "Tel\u00e9fono"
   },
   {
    "fieldname": "foto",
@@ -40,10 +54,74 @@
    "fieldname": "ubicacion",
    "fieldtype": "Geolocation",
    "label": "Ubicacion"
+  },
+  {
+   "fieldname": "actividadsocio",
+   "fieldtype": "Data",
+   "label": "Actividad"
+  },
+  {
+   "fieldname": "experienciasocio",
+   "fieldtype": "Int",
+   "label": "Experiencia (a\u00f1os)"
+  },
+  {
+   "fieldname": "datos_del_c\u00f3nyuge_section",
+   "fieldtype": "Section Break",
+   "label": "Datos del C\u00f3nyuge"
+  },
+  {
+   "fieldname": "nombreconyuge",
+   "fieldtype": "Data",
+   "label": "Nombre c\u00f3nyuge"
+  },
+  {
+   "fieldname": "cedulaconyuge",
+   "fieldtype": "Data",
+   "label": "Cedula c\u00f3nyuge"
+  },
+  {
+   "fieldname": "actividadconyuge",
+   "fieldtype": "Data",
+   "label": "Actividad"
+  },
+  {
+   "fieldname": "experienciaconyuge",
+   "fieldtype": "Int",
+   "label": "Experiencia (a\u00f1os)"
+  },
+  {
+   "fieldname": "ubicaci\u00f3n_del_socio_section",
+   "fieldtype": "Section Break",
+   "label": "Ubicaci\u00f3n del Socio"
+  },
+  {
+   "fieldname": "fecha_nac",
+   "fieldtype": "Date",
+   "label": "Fecha de nacimiento"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "genero",
+   "fieldtype": "Link",
+   "label": "G\u00e9nero",
+   "options": "Genero"
+  },
+  {
+   "fieldname": "lugar_nac",
+   "fieldtype": "Data",
+   "label": "Lugar de Nacimiento"
   }
  ],
  "image_field": "foto",
- "modified": "2021-03-05 12:15:52.235279",
+ "modified": "2021-03-05 12:37:16.922271",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "Socio",
