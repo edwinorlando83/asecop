@@ -39,6 +39,7 @@ function calcular(frm) {
 	else {
 		frm.fields_dict.fecha_nac.set_label('Fecha de nacimiento ');
 	}
+}
 	function getEdad(dateString) {
 		let hoy = new Date();
 		let fechaNacimiento = new Date(dateString);
