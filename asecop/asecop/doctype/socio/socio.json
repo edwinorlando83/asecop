@@ -7,7 +7,9 @@
  "field_order": [
   "nombre",
   "cedula",
-  "telefono"
+  "telefono",
+  "foto",
+  "ubicacion"
  ],
  "fields": [
   {
@@ -27,9 +29,21 @@
    "fieldname": "telefono",
    "fieldtype": "Data",
    "label": "telefono"
+  },
+  {
+   "fieldname": "foto",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "foto"
+  },
+  {
+   "fieldname": "ubicacion",
+   "fieldtype": "Geolocation",
+   "label": "Ubicacion"
   }
  ],
- "modified": "2021-02-04 11:44:51.392314",
+ "image_field": "foto",
+ "modified": "2021-03-05 12:15:52.235279",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "Socio",
