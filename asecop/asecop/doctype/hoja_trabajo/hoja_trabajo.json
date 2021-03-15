@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "fecha",
+  "socio",
   "monto",
   "column_break_2",
   "agencias",
@@ -14,8 +15,6 @@
   "column_break_4",
   "asesor",
   "plazo",
-  "column_break_6",
-  "socio",
   "activo_corriente_section",
   "efectivo",
   "column_break_10",
@@ -300,10 +299,6 @@
   },
   {
    "fieldname": "column_break_4",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_6",
    "fieldtype": "Column Break"
   },
   {
@@ -729,12 +724,14 @@
   {
    "fieldname": "promedio_utilidad",
    "fieldtype": "Percent",
-   "hidden": 1
+   "hidden": 1,
+   "print_hide": 1
   },
   {
    "fieldname": "promedio_costo",
    "fieldtype": "Percent",
-   "hidden": 1
+   "hidden": 1,
+   "print_hide": 1
   },
   {
    "fieldname": "html_promedio_uticos",
@@ -745,7 +742,8 @@
    "default": "0",
    "fieldname": "total_productos_aux_compras",
    "fieldtype": "Currency",
-   "hidden": 1
+   "hidden": 1,
+   "print_hide": 1
   },
   {
    "fieldname": "html_productos_aux_compras",
@@ -1160,13 +1158,15 @@
    "default": "0",
    "fieldname": "total_flujo_ingresos_integral",
    "fieldtype": "Currency",
-   "hidden": 1
+   "hidden": 1,
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "total_gastos_familiares",
    "fieldtype": "Currency",
-   "hidden": 1
+   "hidden": 1,
+   "print_hide": 1
   },
   {
    "fieldname": "section_break_178",
@@ -1181,65 +1181,75 @@
    "fieldname": "rt_corrientes",
    "fieldtype": "Currency",
    "hidden": 1,
-   "label": "rt_corrientes"
+   "label": "rt_corrientes",
+   "print_hide": 1
   },
   {
    "fieldname": "rt_fijos",
    "fieldtype": "Currency",
    "hidden": 1,
-   "label": "rt_fijos"
+   "label": "rt_fijos",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "rt_activos_negocio",
    "fieldtype": "Currency",
    "hidden": 1,
-   "label": "rt_activos_negocio"
+   "label": "rt_activos_negocio",
+   "print_hide": 1
   },
   {
    "fieldname": "rt_activos_socio",
    "fieldtype": "Currency",
    "hidden": 1,
-   "label": "rt_activos_socio"
+   "label": "rt_activos_socio",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "rt_pasivo_cp",
    "fieldtype": "Currency",
    "hidden": 1,
-   "label": "rt_pasivo_cp"
+   "label": "rt_pasivo_cp",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "rt_pasivo_lp",
    "fieldtype": "Currency",
    "hidden": 1,
-   "label": "rt_pasivo_lp"
+   "label": "rt_pasivo_lp",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "rt_pasivo",
    "fieldtype": "Currency",
    "hidden": 1,
-   "label": "rt_pasivo"
+   "label": "rt_pasivo",
+   "print_hide": 1
   },
   {
    "fieldname": "rt_patrimonio_neg",
    "fieldtype": "Currency",
    "hidden": 1,
-   "label": "rt_patrimonio_neg"
+   "label": "rt_patrimonio_neg",
+   "print_hide": 1
   },
   {
    "fieldname": "rt_patrimonio_fam",
    "fieldtype": "Currency",
    "hidden": 1,
-   "label": "rt_patrimonio_fam"
+   "label": "rt_patrimonio_fam",
+   "print_hide": 1
   },
   {
    "fieldname": "rt_pasivo_patrimanio",
    "fieldtype": "Currency",
    "hidden": 1,
-   "label": "rt_pasivo_patrimanio"
+   "label": "rt_pasivo_patrimanio",
+   "print_hide": 1
   },
   {
    "default": "0",
@@ -1271,31 +1281,35 @@
    "fieldname": "i_liquidez",
    "fieldtype": "Percent",
    "hidden": 1,
-   "label": "i_liquidez"
+   "label": "i_liquidez",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "i_endeuda",
    "fieldtype": "Percent",
    "hidden": 1,
-   "label": "i_endeuda"
+   "label": "i_endeuda",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "i_endeuda_f",
    "fieldtype": "Percent",
    "hidden": 1,
-   "label": "i_endeuda_f"
+   "label": "i_endeuda_f",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "i_razon_cuota",
    "fieldtype": "Percent",
    "hidden": 1,
-   "label": "i_razon_cuota"
+   "label": "i_razon_cuota",
+   "print_hide": 1
   }
  ],
- "modified": "2021-03-03 16:45:58.460365",
+ "modified": "2021-03-11 15:02:07.697119",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
