@@ -12,6 +12,7 @@
   "column_break_2",
   "agencias",
   "cuota",
+  "tipo_credito",
   "column_break_4",
   "asesor",
   "plazo",
@@ -519,7 +520,7 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "C\u00f3digo",
-   "options": "HT-"
+   "options": "SOL-"
   },
   {
    "fieldname": "column_break_19",
@@ -1307,9 +1308,16 @@
    "hidden": 1,
    "label": "i_razon_cuota",
    "print_hide": 1
+  },
+  {
+   "fieldname": "tipo_credito",
+   "fieldtype": "Link",
+   "label": "TIPO DE CREDITO",
+   "options": "tipo_credito",
+   "reqd": 1
   }
  ],
- "modified": "2021-03-11 15:02:07.697119",
+ "modified": "2021-03-24 20:20:41.001839",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
@@ -1340,6 +1348,7 @@
    "write": 1
   }
  ],
+ "search_fields": "socio,monto",
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1
