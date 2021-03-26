@@ -1,4 +1,5 @@
 {
+ "allow_rename": 1,
  "autoname": "field:nombreapellido_g",
  "creation": "2021-03-24 05:02:56.968762",
  "doctype": "DocType",
@@ -119,7 +120,7 @@
   {
    "fieldname": "datos_personales_section",
    "fieldtype": "Section Break",
-   "label": "Datos personales"
+   "label": "Datos personales del GARANTE"
   },
   {
    "fieldname": "fechanac",
@@ -403,12 +404,11 @@
   {
    "fieldname": "ci_conyuge",
    "fieldtype": "Data",
-   "label": "C.I",
-   "reqd": 1
+   "label": "C.I"
   }
  ],
  "image_field": "foto",
- "modified": "2021-03-24 20:07:29.697099",
+ "modified": "2021-03-26 05:14:32.801610",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "Garantes",
@@ -441,5 +441,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "nombreapellido_g",
  "track_changes": 1
 }

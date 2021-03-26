@@ -1,4 +1,5 @@
 {
+ "autoname": "naming_series:",
  "creation": "2021-03-24 17:24:47.328914",
  "doctype": "DocType",
  "document_type": "Document",
@@ -32,6 +33,7 @@
   "gar_qui",
   "gar_sol",
   "pre_ind",
+  "column_break_28",
   "cre_hipo",
   "avaluo",
   "fecha_avaluo",
@@ -42,7 +44,8 @@
   "ahorromensual",
   "column_break_18",
   "observacion",
-  "section_break_24"
+  "section_break_24",
+  "naming_series"
  ],
  "fields": [
   {
@@ -260,10 +263,22 @@
    "fieldname": "clasificacion_credito",
    "fieldtype": "Link",
    "label": "CLASIFICACION DE CR\u00c9DITO ",
-   "options": "clasificacion_credito"
+   "options": "clasificacion_credito",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_28",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "codigo",
+   "options": "AC-"
   }
  ],
- "modified": "2021-03-24 20:36:38.109523",
+ "modified": "2021-03-26 06:45:10.902958",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "acta_comite",

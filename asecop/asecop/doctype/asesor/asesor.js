@@ -12,7 +12,7 @@ frappe.ui.form.on('Asesor', {
 		  });
 
 		  if (frm.doc.provincia) get_cantones(frm.doc.provincia, frm);
-		  
+		  if (frm.doc.canton ) get_parroquias (frm.doc.canton , frm);
 	  },
 	  provincia(frm){
 	        get_cantones(frm.doc.provincia, frm); 

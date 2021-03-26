@@ -20,12 +20,11 @@
    "fieldname": "comentario",
    "fieldtype": "Small Text",
    "in_list_view": 1,
-   "label": "Comentario",
-   "reqd": 1
+   "label": "Comentario"
   }
  ],
  "istable": 1,
- "modified": "2021-03-24 17:42:15.070073",
+ "modified": "2021-03-25 21:38:49.636994",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "acta_comite_comentarios",

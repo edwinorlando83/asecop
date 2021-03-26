@@ -18,6 +18,7 @@ frappe.ui.form.on('Garantes', {
 			callback: (r) => {
 				frm.set_df_property("provincia", "options", r.message);
 				frm.refresh_field("provincia");
+
 				frm.set_df_property("provincia_neg", "options", r.message);
 				frm.refresh_field("provincia_neg");
 			},
@@ -26,7 +27,9 @@ frappe.ui.form.on('Garantes', {
 
 
 		if (frm.doc.provincia) get_cantones(frm.doc.provincia, frm);
-		if (frm.doc.provincia_neg) get_cantones(frm.doc.provincia_neg, frm);
+		if (frm.doc.provincia_neg) get_cantones_neg(frm.doc.provincia_neg, frm);
+		if (frm.doc.canton_neg) get_parroquias_neg(frm.doc.canton_neg, frm);
+		if (frm.doc.canton ) get_parroquias (frm.doc.canton , frm);
 		if (frm.is_new()) {
 			frm.add_child('garante_bienes', { detalle: 'CASA Y TERRENO', valor: 0 });
 			frm.add_child('garante_bienes', { detalle: 'TERRENOS', valor: 0 });

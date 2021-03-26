@@ -7,7 +7,8 @@
  "engine": "InnoDB",
  "field_order": [
   "detalle",
-  "orden"
+  "orden",
+  "desabilitado"
  ],
  "fields": [
   {
@@ -21,11 +22,18 @@
   {
    "fieldname": "orden",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Orden",
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "desabilitado",
+   "fieldtype": "Check",
+   "label": "Desabilitado"
   }
  ],
- "modified": "2021-03-24 17:44:15.945210",
+ "modified": "2021-03-26 04:53:01.878447",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "tipos_comentarios",
