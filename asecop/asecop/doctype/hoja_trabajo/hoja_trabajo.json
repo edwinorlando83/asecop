@@ -231,7 +231,8 @@
    "fieldname": "socio",
    "fieldtype": "Link",
    "label": "Socio",
-   "options": "Socio"
+   "options": "Socio",
+   "reqd": 1
   },
   {
    "fieldname": "monto",
@@ -1317,7 +1318,7 @@
    "reqd": 1
   }
  ],
- "modified": "2021-03-24 20:20:41.001839",
+ "modified": "2021-03-30 10:11:46.248300",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
