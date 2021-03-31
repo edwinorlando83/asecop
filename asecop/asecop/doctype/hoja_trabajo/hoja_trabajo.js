@@ -4,25 +4,25 @@
 frappe.ui.form.on('hoja_trabajo', {
 	refresh: function (frm) {
 		cur_frm.fields_dict["frecuencia_compras"].grid.wrapper.find('.grid-add-row').hide();
-	 
+
 		cur_frm.fields_dict["auxiliar_ventas"].grid.wrapper.find('.grid-add-row').hide();
 		cur_frm.fields_dict["flujo_ingreso_gastos"].grid.wrapper.find('.grid-add-row').hide();
 		cur_frm.fields_dict["auxiliar_ventas_sec"].grid.wrapper.find('.grid-add-row').hide();
 		//cur_frm.fields_dict["frecuencia_compras"].grid.add_custom_button('Add Time Slots');
-			
+
 		cur_frm.fields_dict["flujo_ingresos_integral"].grid.wrapper.find('.grid-add-row').hide();
 		cur_frm.fields_dict["gastos_familiares"].grid.wrapper.find('.grid-add-row').hide();
-
+		initEvents();
 	},
 	onload(frm) {
 
-		frm.set_query("asesor", function( ) {  
+		frm.set_query("asesor", function () {
 			return {
-				 filters: {
-				  agencias: frm.doc.agencias 
+				filters: {
+					agencias: frm.doc.agencias
 				}
-			  };
-			});
+			};
+		});
 
 
 		//frm.get_field("frecuencia_compras").grid.only_sortable();
@@ -58,7 +58,7 @@ frappe.ui.form.on('hoja_trabajo', {
 
 
 			//flujo_ingreso
-		
+
 			frm.add_child('flujo_ingreso_gastos', { descripcion: 'Arriendo', actividad1: 0, actividad2: 0, total: 0 });
 			frm.add_child('flujo_ingreso_gastos', { descripcion: 'Servicios Básicos', actividad1: 0, actividad2: 0, total: 0 });
 			frm.add_child('flujo_ingreso_gastos', { descripcion: 'Transporte', actividad1: 0, actividad2: 0, total: 0 });
@@ -67,8 +67,8 @@ frappe.ui.form.on('hoja_trabajo', {
 			frm.add_child('flujo_ingreso_gastos', { descripcion: 'Otros', actividad1: 0, actividad2: 0, total: 0 });
 
 		}
+	
 
-		
 
 	},
 	efectivo: function (frm) {
@@ -82,8 +82,8 @@ frappe.ui.form.on('hoja_trabajo', {
 	},
 	otros: function (frm) {
 		calcular_total_disponible(frm);
-	} 
- 
+	}
+
 	, enero() { sumarmeses(); }
 	, febrero() { sumarmeses(); }
 	, marzo() { sumarmeses(); }
@@ -107,85 +107,99 @@ frappe.ui.form.on('hoja_trabajo', {
 	, septiembre_s() { sumarmeses2(); }
 	, noviembre_s() { sumarmeses2(); }
 	, diciembre_s() { sumarmeses2(); }
-	
-	,ingventas_act1(frm){
+
+	, ingventas_act1(frm) {
 		calcular_1act(frm);
 		calcular_ingresos_del_negocio(frm);
 	},
-	 ingventas_act2(frm){
+	ingventas_act2(frm) {
 		calcular_1act2(frm);
-		 
+
 	}
-	,compras_act1(frm){
+	, compras_act1(frm) {
 		calcular_ingresos_del_negocio(frm);
-	} 
+	}
 
-	,ingventas_act2(frm){
+	, ingventas_act2(frm) {
 		calcular_ingresos_del_negocio2(frm);
 	}
-	,compras_act2(frm){
+	, compras_act2(frm) {
 		calcular_ingresos_del_negocio2(frm);
 	},
 
-	gastos_act1(frm){
+	gastos_act1(frm) {
 		calcular_gastos_total(frm);
 	},
-	gastos_act2(frm){
+	gastos_act2(frm) {
 		calcular_gastos_total(frm);
-	} 
+	}
 });
 
- //promedio_costo_s
-function calcular_gastos_total(frm){
-	frm.doc.gastos_act3 =  frm.doc.gastos_act1   + frm.doc.gastos_act2;
-	frm.refresh_fields ();
+function initEvents(){
+	$(document).find("[name='bt1']").on("click", function () {	 
+		ocultartodos();
+	
+	});
 }
 
-function calcular_1act(frm){
-	frm.doc.costo_act1 =  frm.doc.promedio_costo  * frm.doc.ingventas_act1/100;
+function ocultar() {
+ 
+
+}
+function mostrar_inventario() {
+  cur_frm.set_df_property("otros", "hidden", 0);  
+}
+//promedio_costo_s
+function calcular_gastos_total(frm) {
+	frm.doc.gastos_act3 = frm.doc.gastos_act1 + frm.doc.gastos_act2;
+	frm.refresh_fields();
+}
+
+function calcular_1act(frm) {
+	frm.doc.costo_act1 = frm.doc.promedio_costo * frm.doc.ingventas_act1 / 100;
 	console.log(' romedio_costo ' + frm.doc.promedio_costo);
 	console.log(' ingventas_act1 ' + frm.doc.ingventas_act1);
-	frm.refresh_fields ();
+	frm.refresh_fields();
 }
-function calcular_1act2(frm){
-	frm.doc.costo_act1 =  frm.doc.promedio_costo_s  * frm.doc.ingventas_act2/100;
-	frm.refresh_fields ();
+function calcular_1act2(frm) {
+	frm.doc.costo_act1 = frm.doc.promedio_costo_s * frm.doc.ingventas_act2 / 100;
+	frm.refresh_fields();
 }
-function calcular_ingresos_del_negocio(frm){
-	frm.doc.ingre_act1 =     frm.doc.ingventas_act1  -  frm.doc.compras_act1   ; 
-	frm.doc.ingre_act3 =  frm.doc.ingre_act1   + frm.doc.ingre_act2;	
-	frm.doc.ingventas_act3  = frm.doc.ingventas_act1  + frm.doc.ingventas_act2 ;
-	frm.doc.compras_act3 =  frm.doc.compras_act2  +  frm.doc.compras_act1;
-	frm.refresh_fields( );
-} 
-function calcular_ingresos_del_negocio2(frm){
-	frm.doc.ingre_act2 =   frm.doc.ingventas_act2  -  frm.doc.compras_act2  ; 
-	frm.doc.ingre_act3 =  frm.doc.ingre_act1   + frm.doc.ingre_act2;	 
-	frm.doc.ingventas_act3  = frm.doc.ingventas_act1  + frm.doc.ingventas_act2 ;
-	frm.doc.compras_act3 =  frm.doc.compras_act2  +  frm.doc.compras_act1;
-	frm.refresh_fields( );
+function calcular_ingresos_del_negocio(frm) {
+	frm.doc.ingre_act1 = frm.doc.ingventas_act1 - frm.doc.compras_act1;
+	frm.doc.ingre_act3 = frm.doc.ingre_act1 + frm.doc.ingre_act2;
+	frm.doc.ingventas_act3 = frm.doc.ingventas_act1 + frm.doc.ingventas_act2;
+	frm.doc.compras_act3 = frm.doc.compras_act2 + frm.doc.compras_act1;
+	frm.refresh_fields();
+}
+function calcular_ingresos_del_negocio2(frm) {
+	frm.doc.ingre_act2 = frm.doc.ingventas_act2 - frm.doc.compras_act2;
+	frm.doc.ingre_act3 = frm.doc.ingre_act1 + frm.doc.ingre_act2;
+	frm.doc.ingventas_act3 = frm.doc.ingventas_act1 + frm.doc.ingventas_act2;
+	frm.doc.compras_act3 = frm.doc.compras_act2 + frm.doc.compras_act1;
+	frm.refresh_fields();
 }
 
 frappe.ui.form.on("flujo_ingresos_integral", {
 	valor: function (frm, cdt, cdn) {
-		var t_total=0;
-	$.each(cur_frm.doc.flujo_ingresos_integral, function (i, row) {	 
-		t_total += row.valor;
-	});
-	cur_frm.doc.total_flujo_ingresos_integral = t_total;
-	cur_frm.refresh_fields();
-	} 
+		var t_total = 0;
+		$.each(cur_frm.doc.flujo_ingresos_integral, function (i, row) {
+			t_total += row.valor;
+		});
+		cur_frm.doc.total_flujo_ingresos_integral = t_total;
+		cur_frm.refresh_fields();
+	}
 });
 
 frappe.ui.form.on("gastos_familiares", {
 	valor: function (frm, cdt, cdn) {
-		var t_total=0;
-	$.each(cur_frm.doc.gastos_familiares, function (i, row) {	 
-		t_total += row.valor;
-	});
-	cur_frm.doc.total_gastos_familiares = t_total;
-	cur_frm.refresh_fields();
-	} 
+		var t_total = 0;
+		$.each(cur_frm.doc.gastos_familiares, function (i, row) {
+			t_total += row.valor;
+		});
+		cur_frm.doc.total_gastos_familiares = t_total;
+		cur_frm.refresh_fields();
+	}
 });
 
 
@@ -391,7 +405,7 @@ function calcular_flujo_ingreso_gastos() {
 	cur_frm.refresh_fields();
 }
 
- 
+
 function calcular_auxiliar_ventas_sec() {
 	var t_total = 0;
 	$.each(cur_frm.doc.auxiliar_ventas_sec, function (i, row) {
@@ -446,10 +460,10 @@ function calcular_frecuencia_compras_sec() {
 		row.total = row.valor * row.dias;
 		t_total += row.total;
 	});
- 
-    cur_frm.doc.total_fc_s =  t_total; 
-	console.log( cur_frm.doc.total_fc_s);
- 
+
+	cur_frm.doc.total_fc_s = t_total;
+	console.log(cur_frm.doc.total_fc_s);
+
 	cur_frm.refresh_fields();
 }
 
@@ -507,7 +521,7 @@ function calcular_prestamos_largoplazo() {
 	$.each(cur_frm.doc.prestamos_largoplazo, function (i, row) {
 
 		t_total += row.saldo;
-		 
+
 	});
 	cur_frm.doc.total_prestamolargo = t_total;
 	cur_frm.refresh_fields();
@@ -546,7 +560,7 @@ function sumarmeses2() {
 	var total = cur_frm.doc.enero_s + cur_frm.doc.febrero_s + cur_frm.doc.marzo_s + cur_frm.doc.abril_s + cur_frm.doc.mayo_s
 		+ cur_frm.doc.junio_s + cur_frm.doc.julio_s + cur_frm.doc.agosto_s + cur_frm.doc.septiembre_s + cur_frm.doc.octubre_s + cur_frm.doc.noviembre_s + cur_frm.doc.diciembre_s;
 
-		console.log("sumarmeses2=="+total);
+	console.log("sumarmeses2==" + total);
 	cur_frm.doc.total_s = total;
 	cur_frm.doc.promedio_s = total / 12;
 	cur_frm.refresh_field('total_s');
@@ -656,3 +670,151 @@ function calcular_CUENTASPORCOBRAR(frm) {
 	console.log(t_monto_inical);
 	cur_frm.refresh_fields();
 }
+
+function ocultartodos(){
+
+	for( let i=0;i<arrayCols.length;i++){
+		cur_frm.set_df_property(arrayCols[i], "hidden", 1);  
+	}
+}
+
+let arrayCols=[   
+
+"cuentas_por_cobrar_section",
+"cuenta_por_cobrar",
+"totales_html",
+"sec_inventario",
+"html_27",
+"mercaderia",
+"total_inventario_html",
+"sec_acfij",
+"html_32",
+"total_activosfijneg",
+"muebles_enseres",
+"total_mueblesensereshtml",
+"maquinaria_equipo",
+"total_maquinaria_html",
+"terrenos_casas",
+"total_terrenos_html",
+"vehiculo",
+"total_vehiculo_html",
+"otro_activos",
+"total_otrosactivos_html",
+"sec_aux",
+"html_50",
+"cuentasporcobrar",
+"total_cuentasporcobrar_html",
+"prestamos",
+"total_prestamos_html",
+"prestamos_largoplazo",
+"total_prestamolargo_html",
+"otros_pasivos",
+"total_otros_pasivos_html",
+"sec_actfam",
+"activos_familiares",
+"total_activos_familiares_html",
+"sec_auxfamil",
+"html_68",
+"html_69",
+"actividad_principal",
+"html_71",
+"auxiliar_ventas",
+"total_auxiliar_ventas_html",
+"sec_flujo",
+"enero",
+"febrero",
+"marzo",
+"column_break_41",
+"abril",
+"mayo",
+"junio",
+"column_break_43",
+"julio",
+"agosto",
+"septiembre",
+"column_break_49",
+"octubre",
+"noviembre",
+"diciembre",
+"column_break_45",
+"meses_promedio",
+"meses_total",
+"sec_",
+"margen_ganancias",
+"html_promedio_uticos",
+"sec_auxcompras",
+"html_101",
+"frecuencia_compras",
+"productos_aux_compras",
+"html_productos_aux_compras",
+"sec_flujos",
+"section_break_108",
+"html_109",
+"actividad_secundaria",
+"html_111",
+"auxiliar_ventas_sec",
+"auxiliar_ventas_sec_html",
+"section_break_115",
+"enero_s",
+"febrero_s",
+"marzo_s",
+"column_break_118",
+"abril_s",
+"mayo_s",
+"junio_s",
+"column_break_121",
+"julio_s",
+"agosto_s",
+"septiembre_s",
+"section_break_124",
+"octubre_s",
+"noviembre_s",
+"diciembre_s",
+"column_break_127",
+"promedio_s",
+"total_s",
+"section_break_101",
+"margen_ganancias_sec",
+"html_margengan_s",
+"hmlt111",
+"frecuencia_compras_sec",
+"htmltotal_fc_s",
+"productos_aux_compras_sec",
+"htmltotal_aux_com_sec",
+"section_break_137",
+"htmltitulo11",
+"section_break_147",
+"actividad_1",
+"ingventas_act1",
+"compras_act1",
+"costo_act1",
+"ingre_act1",
+"gastos_act1",
+"column_break_152",
+"actividad_2",
+"ingventas_act2",
+"compras_act2",
+"costo_act2",
+"ingre_act2",
+"gastos_act2",
+"column_break_157",
+"total_ingresos",
+"ingventas_act3",
+"compras_act3",
+"costo_act3",
+"ingre_act3",
+"gastos_act3",
+"section_break_157",
+"flujo_ingreso_gastos",
+"sec00005",
+"htmlsec11",
+"flujo_ingresos_integral",
+"html_flujo_ingresos_integral",
+"gastos_familiares",
+"html_gastos_familiares",
+"section_break_178",
+"tt_ingresonetouf",
+"tt_pagocuotas",
+"tt_flujointegral",
+"section_break_182",
+"html_indicadores"];
