@@ -27,7 +27,6 @@
   "column_break_19",
   "total_disponible",
   "section_break_21",
-  "tabs",
   "cuentas_por_cobrar_section",
   "cuenta_por_cobrar",
   "totales_html",
@@ -1349,13 +1348,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "tabs",
-   "fieldtype": "HTML",
-   "hidden": 1,
-   "label": " ",
-   "options": "<table style=\"width: 100%;\"> \n  <tbody><tr>\n    <td> <button name=\"bt1\" style=\"height: 40px; font-size: 10px; background-color: #555555; color: white;\" type=\"button\">INVENTARIO</button> </td>\n    <td> <button id=\"bt2\" style=\"height: 40px; font-size: 10px; background-color: #008CBA; color: white;\" type=\"button\">ACTIVOS FIJOS DE NEGOCIO</button> </td>\n\t<td> <button id=\"bt3\" style=\"height: 40px; font-size: 10px; background-color: #008CBA; color: white;\" type=\"button\">AUXILIAR DE PASIVOS</button> </td>\n\t<td> <button id=\"bt4\" style=\"height: 40px; font-size: 10px; background-color: #008CBA; color: white;\" type=\"button\">ACTIVOS FIJOS FAMILIARES</button> </td>\n\t<td> <button id=\"bt5\" style=\"height: 40px; font-size: 10px; background-color: #008CBA; color: white;\" type=\"button\">ACTIVIDAD PRINCIPAL</button> </td>\n\t<td> <button id=\"bt6\" style=\"height: 40px; font-size: 10px; background-color: #008CBA; color: white;\" type=\"button\">ACTIVIDAD SECUNDARIA</button> </td>\n\t<td> <button id=\"bt7\" style=\"height: 40px; font-size: 10px; background-color: #008CBA; color: white;\" type=\"button\">FLUJO DE INGRESOS POR ACTIVIDAD</button> </td>\n\t<td> <button id=\"bt8\" style=\"height: 40px; font-size: 10px; background-color: #008CBA; color: white;\" type=\"button\">FLUJO DE INGRESOS INTEGRAL</button> </td>\n  </tr> \n</tbody></table>"
-  },
-  {
    "collapsible": 1,
    "fieldname": "sec00act",
    "fieldtype": "Section Break",
@@ -1372,7 +1364,7 @@
    "fieldtype": "Section Break"
   }
  ],
- "modified": "2021-03-30 21:58:35.353869",
+ "modified": "2021-03-31 10:25:16.520584",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
