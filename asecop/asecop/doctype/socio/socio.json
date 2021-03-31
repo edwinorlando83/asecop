@@ -131,13 +131,13 @@
   {
    "fieldname": "estadocivil",
    "fieldtype": "Select",
-   "label": "Estado Civil",
+   "label": "Estado Civil ",
    "options": "Soltero/a\nUni\u00f3n de Hecho\nCasado/a\nDivorciado/a\nViudo/a",
    "reqd": 1
   }
  ],
  "image_field": "foto",
- "modified": "2021-03-31 10:40:11.725785",
+ "modified": "2021-03-31 13:23:54.476944",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "Socio",

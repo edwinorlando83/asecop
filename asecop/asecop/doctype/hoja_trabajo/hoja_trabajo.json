@@ -227,7 +227,7 @@
    "fieldname": "asesor",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Asesor",
+   "label": "Asesor ",
    "options": "Asesor",
    "reqd": 1
   },
@@ -1364,7 +1364,7 @@
    "fieldtype": "Section Break"
   }
  ],
- "modified": "2021-03-31 10:25:16.520584",
+ "modified": "2021-03-31 13:24:08.697223",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
