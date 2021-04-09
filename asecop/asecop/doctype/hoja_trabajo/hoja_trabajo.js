@@ -268,7 +268,10 @@ frappe.ui.form.on("cuenta_por_cobrar", {
 	saldo: function (frm, cdt, cdn) {
 		const doc = frappe.get_doc(cdt, cdn);
 		calcular_CUENTASPORCOBRAR(frm);
-	}
+	},
+	cuenta_por_cobrar_remove: function (frm) {
+		calcular_CUENTASPORCOBRAR(frm);
+	},
 });
 
 frappe.ui.form.on("mercaderia", {
@@ -279,7 +282,10 @@ frappe.ui.form.on("mercaderia", {
 	cantidad: function (frm, cdt, cdn) {
 		const doc = frappe.get_doc(cdt, cdn);
 		calcular_MERCADERIA(frm);
-	}
+	},
+	mercaderia_remove: function (frm) {
+		calcular_MERCADERIA(frm);
+	},
 });
 
 frappe.ui.form.on("muebles_enseres", {
@@ -290,6 +296,9 @@ frappe.ui.form.on("muebles_enseres", {
 	vunitario: function (frm, cdt, cdn) {
 		const doc = frappe.get_doc(cdt, cdn);
 		calcular_MUEBLES_ENSERES(frm);
+	},
+	muebles_enseres_remove: function (frm) {
+		calcular_MUEBLES_ENSERES(frm);
 	}
 });
 
@@ -299,17 +308,26 @@ frappe.ui.form.on("maquinaria_equipo", {
 	},
 	vunitario: function (frm, cdt, cdn) {
 		calcular_MAQUINARIA(frm);
+	},
+	maquinaria_equipo_remove: function (frm) {
+		calcular_MAQUINARIA(frm);
 	}
 });
 
 frappe.ui.form.on("terrenos_casas", {
 	avaluo: function (frm, cdt, cdn) {
 		calcular_TERRENOS(frm);
+	},
+	terrenos_casas_remove: function (frm) {
+		calcular_TERRENOS(frm);
 	}
 });
 
 frappe.ui.form.on("vehiculo", {
 	avaluo: function (frm, cdt, cdn) {
+		calcular_vehiculo(frm);
+	},
+	vehiculo_remove: function (frm) {
 		calcular_vehiculo(frm);
 	}
 });
@@ -321,12 +339,20 @@ frappe.ui.form.on("otro_activos", {
 	costo(frm, cdt, cdn) {
 		calcular_otro_activos();
 	}
+	,
+	otro_activos_remove: function (frm) {
+		calcular_otro_activos(frm);
+	}
 });
 
 frappe.ui.form.on("activos_familiares", {
 
 	total(frm, cdt, cdn) {
 		calcular_activos_familiares();
+	}
+	,
+	activos_familiares_remove: function (frm) {
+		calcular_activos_familiares(frm);
 	}
 });
 frappe.ui.form.on("auxiliar_ventas", {
@@ -342,11 +368,18 @@ frappe.ui.form.on("auxiliar_ventas", {
 frappe.ui.form.on("cuentasporcobrar", {
 	monto(frm, cdt, cdn) {
 		calcular_cuentasporcobrar();
+	},
+	cuentasporcobrar_remove: function (frm) {
+		calcular_cuentasporcobrar();
 	}
 });
 
 frappe.ui.form.on("prestamos", {
 	saldo(frm, cdt, cdn) {
+		calcular_prestamos();
+	}
+	,
+	prestamos_remove: function (frm) {
 		calcular_prestamos();
 	}
 });
@@ -355,10 +388,18 @@ frappe.ui.form.on("prestamos_largoplazo", {
 	saldo(frm, cdt, cdn) {
 		calcular_prestamos_largoplazo();
 	}
+	,
+	prestamos_largoplazo_remove: function (frm) {
+		calcular_prestamos_largoplazo();
+	}
 });
 
 frappe.ui.form.on("otros_pasivos", {
 	monto(frm, cdt, cdn) {
+		calcular_otros_pasivos();
+	}
+	,
+	otros_pasivos_remove: function (frm) {
 		calcular_otros_pasivos();
 	}
 });
@@ -370,6 +411,9 @@ frappe.ui.form.on("margen_ganancias", {
 	},
 	precioventa(frm, cdt, cdn) {
 		calcular_costo_venta();
+	},
+ 	margen_ganancias_remove: function (frm) {
+		calcular_costo_venta(frm);
 	}
 });
 
@@ -380,6 +424,10 @@ frappe.ui.form.on("margen_ganancias_sec", {
 	precioventa(frm, cdt, cdn) {
 		calcular_costo_venta_s();
 	}
+	, 
+	margen_ganancias_sec_remove: function (frm) {
+		calcular_costo_venta_s( );
+	}
 });
 
 frappe.ui.form.on("frecuencia_compras", {
@@ -389,6 +437,10 @@ frappe.ui.form.on("frecuencia_compras", {
 	dias(frm, cdt, cdn) {
 		calcular_frecuencia_compras();
 	}
+	, 
+	frecuencia_compras_remove: function (frm) {
+		calcular_frecuencia_compras( );
+	}
 });
 
 frappe.ui.form.on("frecuencia_compras_sec", {
@@ -397,6 +449,10 @@ frappe.ui.form.on("frecuencia_compras_sec", {
 	},
 	dias(frm, cdt, cdn) {
 		calcular_frecuencia_compras_sec();
+	}
+	, 
+	frecuencia_compras_sec_remove: function (frm) {
+		calcular_frecuencia_compras_sec( );
 	}
 });
 
@@ -408,6 +464,10 @@ frappe.ui.form.on("productos_aux_compras", {
 	cantidad(frm, cdt, cdn) {
 		calcular_productos_aux_compras();
 	}
+	, 
+	productos_aux_compras_remove: function (frm) {
+		calcular_productos_aux_compras( );
+	}
 });
 frappe.ui.form.on("productos_aux_compras_sec", {
 	valor(frm, cdt, cdn) {
@@ -415,6 +475,10 @@ frappe.ui.form.on("productos_aux_compras_sec", {
 	},
 	cantidad(frm, cdt, cdn) {
 		calcular_productos_aux_compras_sec();
+	}
+	, 
+	productos_aux_compras_sec_remove: function (frm) {
+		calcular_productos_aux_compras_sec( );
 	}
 });
 
@@ -424,6 +488,9 @@ frappe.ui.form.on("auxiliar_ventas_sec", {
 	},
 	tiempo(frm, cdt, cdn) {
 		calcular_auxiliar_ventas_sec();
+	}, 
+	auxiliar_ventas_sec_remove: function (frm) {
+		calcular_auxiliar_ventas_sec( );
 	}
 });
 
@@ -436,6 +503,10 @@ frappe.ui.form.on("flujo_ingreso_gastos", {
 	},
 	total(frm, cdt, cdn) {
 		calcular_flujo_ingreso_gastos();
+	}
+	, 
+	flujo_ingreso_gastos_remove: function (frm) {
+		calcular_flujo_ingreso_gastos( );
 	}
 });
 
@@ -576,8 +647,15 @@ function calcular_costo_venta_s() {
 		_count++;
 	});
 
-	cur_frm.doc.promedio_utilidad_s = roundNumber(t_total / _count, 2);
-	cur_frm.doc.promedio_costo_s = roundNumber(t_total2 / _count, 2);
+	if(t_total == 0){
+		cur_frm.doc.promedio_utilidad_s = 0;
+		cur_frm.doc.promedio_costo_s = 0;
+	}
+	else{
+		cur_frm.doc.promedio_utilidad_s = roundNumber(t_total / _count, 2);
+		cur_frm.doc.promedio_costo_s = roundNumber(t_total2 / _count, 2);
+	}
+
 
 	cur_frm.refresh_field('margen_ganancias_sec');
 	cur_frm.refresh_field('promedio_utilidad_s');
@@ -629,7 +707,7 @@ function calcular_cuentasporcobrar() {
 		t_total += row.monto;
 	});
 	cur_frm.doc.total_cuentasporcobrar = t_total;
-	console.log(t_total);
+ 
 	cur_frm.refresh_field('total_cuentasporcobrar');
 	cur_frm.refresh_field('total_cuentasporcobrar_html');
 
@@ -700,6 +778,7 @@ function calcular_otro_activos() {
 	cur_frm.doc.total_otrosactivos = t_total;
 	cur_frm.refresh_field('otro_activos');
 	cur_frm.refresh_field('total_otrosactivos');
+	cur_frm.refresh_field('total_otrosactivos_html');
 }
 
 function calcular_vehiculo(frm) {
@@ -710,6 +789,9 @@ function calcular_vehiculo(frm) {
 	cur_frm.doc.total_vehiculo = t_total;
 	cur_frm.refresh_field('vehiculo');
 	cur_frm.refresh_field('total_vehiculo');
+	cur_frm.refresh_field('total_vehiculo_html');
+	
+
 }
 
 function calcular_TERRENOS(frm) {
@@ -720,6 +802,7 @@ function calcular_TERRENOS(frm) {
 	cur_frm.doc.total_terrenos = t_total;
 	cur_frm.refresh_field('terrenos_casas');
 	cur_frm.refresh_field('total_terrenos');
+	cur_frm.refresh_field('total_terrenos_html');
 }
 
 function calcular_MAQUINARIA(frm) {
@@ -732,6 +815,7 @@ function calcular_MAQUINARIA(frm) {
 	cur_frm.doc.total_maquinaria = t_total;
 	cur_frm.refresh_field('maquinaria_equipo');
 	cur_frm.refresh_field('total_maquinaria');
+	cur_frm.refresh_field('total_maquinaria_html');
 }
 function calcular_MUEBLES_ENSERES(frm) {
 	var t_total = 0;
@@ -744,6 +828,8 @@ function calcular_MUEBLES_ENSERES(frm) {
 	cur_frm.doc.total_mueblesenseres = t_total;
 	cur_frm.refresh_field('muebles_enseres');
 	cur_frm.refresh_field('total_mueblesenseres');
+	cur_frm.refresh_field('total_mueblesensereshtml');
+
 }
 function calcular_MERCADERIA(frm) {
 	var t_total = 0;
@@ -755,6 +841,8 @@ function calcular_MERCADERIA(frm) {
 	cur_frm.doc.total_inventario = t_total;
 	cur_frm.refresh_field('mercaderia');
 	cur_frm.refresh_field('total_inventario');
+	cur_frm.refresh_field('total_inventario_html');
+
 }
 
 function calcular_CUENTASPORCOBRAR(frm) {
@@ -770,6 +858,7 @@ function calcular_CUENTASPORCOBRAR(frm) {
 	cur_frm.refresh_field('cuenta_por_cobrar');
 	cur_frm.refresh_field('total_inicial');
 	cur_frm.refresh_field('total_saldo');
+	cur_frm.refresh_field('totales_html');
 }
 function calculo_costo_act3(frm) {
 	frm.doc.costo_act3 = frm.doc.costo_act1 + frm.doc.costo_act3;
