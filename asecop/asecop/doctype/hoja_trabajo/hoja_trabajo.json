@@ -109,10 +109,11 @@
   "sec_auxcompras",
   "html_101",
   "frecuencia_compras",
+  "total_frecuencia_compras",
+  "total_frecuencia_compras_html",
   "productos_aux_compras",
   "total_productos_aux_compras",
   "html_productos_aux_compras",
-  "sec_flujos",
   "naming_series",
   "section_break_108",
   "html_109",
@@ -141,7 +142,7 @@
   "column_break_127",
   "promedio_s",
   "total_s",
-  "section_break_101",
+  "sec_as",
   "margen_ganancias_sec",
   "promedio_utilidad_s",
   "promedio_costo_s",
@@ -155,7 +156,7 @@
   "htmltotal_aux_com_sec",
   "section_break_147",
   "htmltitulo11",
-  "section_break_137",
+  "secflujoingreso",
   "actividad_1",
   "ingventas_act1",
   "compras_act1",
@@ -178,9 +179,14 @@
   "gastos_act3",
   "section_break_157",
   "flujo_ingreso_gastos",
+  "html_promedio_flujo",
+  "utn_1",
+  "utn_2",
+  "utn_3",
   "section_break_174",
   "htmlsec11",
   "sec00005",
+  "val_ingreso_negocio",
   "flujo_ingresos_integral",
   "html_flujo_ingresos_integral",
   "gastos_familiares",
@@ -341,7 +347,7 @@
    "collapsible": 1,
    "fieldname": "sec_acfij",
    "fieldtype": "Section Break",
-   "label": " ACTIVOS FIJOS DE NEGOCIO "
+   "label": "ACTIVOS FIJOS DE NEGOCIO"
   },
   {
    "fieldname": "otro_activos",
@@ -353,7 +359,7 @@
    "collapsible": 1,
    "fieldname": "sec_aux",
    "fieldtype": "Section Break",
-   "label": "AUXILIAR DE PASIVOS "
+   "label": "AUXILIAR DE PASIVOS"
   },
   {
    "fieldname": "cuentasporcobrar",
@@ -503,7 +509,7 @@
    "collapsible": 1,
    "fieldname": "sec_",
    "fieldtype": "Section Break",
-   "label": "MARGEN DE GANANCIA Y COSTO DE VENTAS  "
+   "label": "MARGEN DE GANANCIA Y COSTO DE VENTAS"
   },
   {
    "fieldname": "margen_ganancias",
@@ -515,7 +521,7 @@
    "collapsible": 1,
    "fieldname": "sec_auxcompras",
    "fieldtype": "Section Break",
-   "label": "AUXILIAR DE COMPRAS "
+   "label": "AUXILIAR DE COMPRAS"
   },
   {
    "fieldname": "frecuencia_compras",
@@ -527,11 +533,6 @@
    "fieldname": "productos_aux_compras",
    "fieldtype": "Table",
    "options": "productos_aux_compras"
-  },
-  {
-   "fieldname": "sec_flujos",
-   "fieldtype": "Section Break",
-   "label": "FLUJO DE INGRESOS POR ACTIVIDAD"
   },
   {
    "fieldname": "naming_series",
@@ -770,12 +771,6 @@
    "options": "Total Productos:{{doc.total_productos_aux_compras}}"
   },
   {
-   "collapsible": 1,
-   "fieldname": "section_break_101",
-   "fieldtype": "Section Break",
-   "label": "MARGEN DE GANANCIA Y COSTO DE VENTAS"
-  },
-  {
    "fieldname": "htmltitulo11",
    "fieldtype": "HTML",
    "options": "<div style=\"background-color: #E6B0AA; font-weight: bold;\"> FLUJO DE INGRESOS POR ACTIVIDAD </div>"
@@ -965,12 +960,6 @@
    "fieldtype": "Table",
    "label": "MARGEN DE GANANCIA Y COSTO DE VENTAS (ACTIVIDAD SECUNDARIA)",
    "options": "margen_ganancias_sec"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "section_break_137",
-   "fieldtype": "Section Break",
-   "label": "FLUJO DE INGRESOS POR ACTIVIDAD "
   },
   {
    "fieldname": "hmlt111",
@@ -1175,7 +1164,7 @@
   {
    "fieldname": "html_flujo_ingresos_integral",
    "fieldtype": "HTML",
-   "options": "Total:{{doc.total_flujo_ingresos_integral}}"
+   "options": "Total:    {{doc.total_flujo_ingresos_integral}}"
   },
   {
    "fieldname": "html_gastos_familiares",
@@ -1351,7 +1340,7 @@
    "collapsible": 1,
    "fieldname": "sec00act",
    "fieldtype": "Section Break",
-   "label": "ACTIVIDAD PRINCIPAL "
+   "label": "ACTIVIDAD PRINCIPAL"
   },
   {
    "collapsible": 1,
@@ -1362,9 +1351,64 @@
   {
    "fieldname": "section_break_174",
    "fieldtype": "Section Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "sec_as",
+   "fieldtype": "Section Break",
+   "label": "MARGEN DE GANANCIA Y COSTO DE VENTAS ACT SEC"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "secflujoingreso",
+   "fieldtype": "Section Break",
+   "label": "FLUJO DE INGRESOS POR ACTIVIDAD"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_frecuencia_compras",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "total_frecuencia_compras"
+  },
+  {
+   "fieldname": "total_frecuencia_compras_html",
+   "fieldtype": "HTML",
+   "options": "Total frecuencia de Compras: {{doc.total_frecuencia_compras}}"
+  },
+  {
+   "default": "0",
+   "fieldname": "val_ingreso_negocio",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Ingreso Negocio",
+   "read_only": 1
+  },
+  {
+   "fieldname": "html_promedio_flujo",
+   "fieldtype": "HTML",
+   "options": "UTILIDAD DEL NEGOCIO: ACTIVIDAD 1: \n {{doc.utn_1}}     ACTIVIDAD 2 :\n{{doc.utn_2}}    TOTAL INGRESOS:\t\t\n {{doc.utn_3}}"
+  },
+  {
+   "default": "0",
+   "fieldname": "utn_1",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "utn_2",
+   "fieldtype": "Currency",
+   "hidden": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "utn_3",
+   "fieldtype": "Currency",
+   "hidden": 1
   }
  ],
- "modified": "2021-03-31 14:22:02.208062",
+ "modified": "2021-04-09 13:20:37.115046",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",

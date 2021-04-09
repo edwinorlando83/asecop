@@ -28,7 +28,7 @@
    "fieldname": "tiempo",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "# DIAS /SEMANAS",
+   "label": "CANTIDAD AL MES",
    "reqd": 1
   },
   {
@@ -41,7 +41,7 @@
   }
  ],
  "istable": 1,
- "modified": "2021-02-04 06:38:11.335668",
+ "modified": "2021-04-09 07:18:32.524998",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "auxiliar_ventas",

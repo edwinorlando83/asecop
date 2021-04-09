@@ -2,6 +2,10 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('hoja_trabajo', {
+
+	onload_post_render: function () {
+		eventoColapsar();
+	},
 	refresh: function (frm) {
 		cur_frm.fields_dict["frecuencia_compras"].grid.wrapper.find('.grid-add-row').hide();
 
@@ -13,6 +17,9 @@ frappe.ui.form.on('hoja_trabajo', {
 		cur_frm.fields_dict["flujo_ingresos_integral"].grid.wrapper.find('.grid-add-row').hide();
 		cur_frm.fields_dict["gastos_familiares"].grid.wrapper.find('.grid-add-row').hide();
 		initEvents();
+
+
+		verificarExpandido();
 	},
 	onload(frm) {
 
@@ -23,6 +30,7 @@ frappe.ui.form.on('hoja_trabajo', {
 				}
 			};
 		});
+
 
 
 		//frm.get_field("frecuencia_compras").grid.only_sortable();
@@ -67,9 +75,16 @@ frappe.ui.form.on('hoja_trabajo', {
 			frm.add_child('flujo_ingreso_gastos', { descripcion: 'Otros', actividad1: 0, actividad2: 0, total: 0 });
 
 		}
-	
+		else {
+
+			sessionStorage.setItem(frm.doc.name, '0');
+		}
 
 
+
+	},
+	sec00act(frm) {
+		alert('ddd');
 	},
 	efectivo: function (frm) {
 		calcular_total_disponible(frm);
@@ -112,7 +127,10 @@ frappe.ui.form.on('hoja_trabajo', {
 		calcular_1act(frm);
 		calcular_ingresos_del_negocio(frm);
 	},
+
+
 	ingventas_act2(frm) {
+		calcular_ingresos_del_negocio2(frm);
 		calcular_1act2(frm);
 
 	}
@@ -120,9 +138,7 @@ frappe.ui.form.on('hoja_trabajo', {
 		calcular_ingresos_del_negocio(frm);
 	}
 
-	, ingventas_act2(frm) {
-		calcular_ingresos_del_negocio2(frm);
-	}
+
 	, compras_act2(frm) {
 		calcular_ingresos_del_negocio2(frm);
 	},
@@ -135,62 +151,100 @@ frappe.ui.form.on('hoja_trabajo', {
 	}
 });
 
-function initEvents(){
-	$(document).find("[name='bt1']").on("click", function () {	 
+function initEvents() {
+	$(document).find("[name='bt1']").on("click", function () {
 		ocultartodos();
-	
+
 	});
 }
 
 function ocultar() {
- 
+
 
 }
 function mostrar_inventario() {
-  cur_frm.set_df_property("otros", "hidden", 0);  
+	cur_frm.set_df_property("otros", "hidden", 0);
 }
 //promedio_costo_s
 function calcular_gastos_total(frm) {
 	frm.doc.gastos_act3 = frm.doc.gastos_act1 + frm.doc.gastos_act2;
-	frm.refresh_fields();
+	frm.refresh_field('gastos_act3');
+
 }
 
 function calcular_1act(frm) {
 	frm.doc.costo_act1 = frm.doc.promedio_costo * frm.doc.ingventas_act1 / 100;
-	console.log(' romedio_costo ' + frm.doc.promedio_costo);
-	console.log(' ingventas_act1 ' + frm.doc.ingventas_act1);
-	frm.refresh_fields();
+	frm.refresh_field('costo_act1');
+
+	calculo_costo_act3(frm);
+
 }
 function calcular_1act2(frm) {
-	frm.doc.costo_act1 = frm.doc.promedio_costo_s * frm.doc.ingventas_act2 / 100;
-	frm.refresh_fields();
+
+	frm.doc.costo_act2 = frm.doc.promedio_costo * frm.doc.ingventas_act2 / 100;
+	frm.refresh_field('costo_act2');
+
+	calculo_costo_act3(frm);
 }
 function calcular_ingresos_del_negocio(frm) {
 	frm.doc.ingre_act1 = frm.doc.ingventas_act1 - frm.doc.compras_act1;
 	frm.doc.ingre_act3 = frm.doc.ingre_act1 + frm.doc.ingre_act2;
 	frm.doc.ingventas_act3 = frm.doc.ingventas_act1 + frm.doc.ingventas_act2;
 	frm.doc.compras_act3 = frm.doc.compras_act2 + frm.doc.compras_act1;
-	frm.refresh_fields();
+
+	frm.refresh_field('ingre_act1');
+	frm.refresh_field('ingre_act3');
+	frm.refresh_field('ingventas_act3');
+	frm.refresh_field('compras_act3');
+	calcular_utilida_negocio();
+
 }
 function calcular_ingresos_del_negocio2(frm) {
 	frm.doc.ingre_act2 = frm.doc.ingventas_act2 - frm.doc.compras_act2;
 	frm.doc.ingre_act3 = frm.doc.ingre_act1 + frm.doc.ingre_act2;
 	frm.doc.ingventas_act3 = frm.doc.ingventas_act1 + frm.doc.ingventas_act2;
 	frm.doc.compras_act3 = frm.doc.compras_act2 + frm.doc.compras_act1;
-	frm.refresh_fields();
-}
 
+	frm.refresh_field('ingre_act2');
+	frm.refresh_field('ingre_act3');
+	frm.refresh_field('ingventas_act3');
+	frm.refresh_field('compras_act3');
+	calcular_utilida_negocio();
+
+}
+function calcular_utilida_negocio() {
+	cur_frm.doc.utn_1 = cur_frm.doc.ingre_act1 - cur_frm.doc.gastos_act1;
+	cur_frm.doc.utn_2 = cur_frm.doc.ingre_act2 - cur_frm.doc.gastos_act2;
+	cur_frm.doc.utn_3 = cur_frm.doc.utn_1 + cur_frm.doc.utn_2;
+	cur_frm.refresh_field('utn_1');
+	cur_frm.refresh_field('utn_2');
+	cur_frm.refresh_field('utn_3');
+	cur_frm.refresh_field('html_promedio_flujo');
+
+
+	cur_frm.get_field("flujo_ingresos_integral").grid.grid_rows[0].doc.valor = cur_frm.doc.utn_3;
+
+	calcular_flujo_ingresos_integral();
+
+	cur_frm.refresh_field('flujo_ingresos_integral');
+}
 frappe.ui.form.on("flujo_ingresos_integral", {
 	valor: function (frm, cdt, cdn) {
-		var t_total = 0;
-		$.each(cur_frm.doc.flujo_ingresos_integral, function (i, row) {
-			t_total += row.valor;
-		});
-		cur_frm.doc.total_flujo_ingresos_integral = t_total;
-		cur_frm.refresh_fields();
+		calcular_flujo_ingresos_integral();
 	}
 });
 
+function calcular_flujo_ingresos_integral() {
+	var t_total = 0;
+	$.each(cur_frm.doc.flujo_ingresos_integral, function (i, row) {
+		t_total += row.valor;
+	});
+
+	cur_frm.doc.total_flujo_ingresos_integral = cur_frm.doc.val_ingreso_negocio + t_total;
+	cur_frm.refresh_field('total_flujo_ingresos_integral');
+	cur_frm.refresh_field('html_flujo_ingresos_integral');
+
+}
 frappe.ui.form.on("gastos_familiares", {
 	valor: function (frm, cdt, cdn) {
 		var t_total = 0;
@@ -198,7 +252,9 @@ frappe.ui.form.on("gastos_familiares", {
 			t_total += row.valor;
 		});
 		cur_frm.doc.total_gastos_familiares = t_total;
-		cur_frm.refresh_fields();
+		cur_frm.refresh_field('gastos_familiares');
+		cur_frm.refresh_field('total_gastos_familiares');
+		cur_frm.refresh_field('html_gastos_familiares');
 	}
 });
 
@@ -268,10 +324,8 @@ frappe.ui.form.on("otro_activos", {
 });
 
 frappe.ui.form.on("activos_familiares", {
-	cantidad(frm, cdt, cdn) {
-		calcular_activos_familiares();
-	},
-	avaluo(frm, cdt, cdn) {
+
+	total(frm, cdt, cdn) {
 		calcular_activos_familiares();
 	}
 });
@@ -304,7 +358,7 @@ frappe.ui.form.on("prestamos_largoplazo", {
 });
 
 frappe.ui.form.on("otros_pasivos", {
-	saldo(frm, cdt, cdn) {
+	monto(frm, cdt, cdn) {
 		calcular_otros_pasivos();
 	}
 });
@@ -402,7 +456,12 @@ function calcular_flujo_ingreso_gastos() {
 	cur_frm.doc.gastos_act1 = t_total1;
 	cur_frm.doc.gastos_act2 = t_total2;
 	cur_frm.doc.gastos_act3 = t_total3;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('gastos_act1');
+	cur_frm.refresh_field('gastos_act2');
+	cur_frm.refresh_field('gastos_act3');
+	cur_frm.refresh_field('flujo_ingreso_gastos');
+
+	calcular_utilida_negocio();
 }
 
 
@@ -414,7 +473,9 @@ function calcular_auxiliar_ventas_sec() {
 		t_total += s_total;
 	});
 	cur_frm.doc.auxiliar_ventas_sec_total = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('auxiliar_ventas_sec');
+	cur_frm.refresh_field('auxiliar_ventas_sec_total');
+	cur_frm.refresh_field('auxiliar_ventas_sec_html');
 }
 
 
@@ -426,7 +487,9 @@ function calcular_productos_aux_compras() {
 
 	});
 	cur_frm.doc.total_productos_aux_compras = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('productos_aux_compras');
+	cur_frm.refresh_field('total_productos_aux_compras');
+	cur_frm.refresh_field('html_productos_aux_compras');
 }
 
 
@@ -438,7 +501,9 @@ function calcular_productos_aux_compras_sec() {
 
 	});
 	cur_frm.doc.total_aux_com_sec = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('htmltotal_aux_com_sec');
+	cur_frm.refresh_field('productos_aux_compras_sec');
+	cur_frm.refresh_field('total_aux_com_sec');
 }
 
 
@@ -450,8 +515,11 @@ function calcular_frecuencia_compras() {
 		t_total += row.total;
 
 	});
-	//  cur_frm.doc.total_otros_pasivos =  t_total; 
-	cur_frm.refresh_fields();
+
+	cur_frm.doc.total_frecuencia_compras = t_total;
+	cur_frm.refresh_field('total_frecuencia_compras_html');
+	cur_frm.refresh_field('total_frecuencia_compras');
+	cur_frm.refresh_field('frecuencia_compras');
 }
 
 function calcular_frecuencia_compras_sec() {
@@ -462,9 +530,12 @@ function calcular_frecuencia_compras_sec() {
 	});
 
 	cur_frm.doc.total_fc_s = t_total;
-	console.log(cur_frm.doc.total_fc_s);
 
-	cur_frm.refresh_fields();
+
+	cur_frm.refresh_field('htmltotal_fc_s');
+	cur_frm.refresh_field('total_fc_s');
+	cur_frm.refresh_field('frecuencia_compras_sec');
+
 }
 
 
@@ -484,7 +555,12 @@ function calcular_costo_venta() {
 	cur_frm.doc.promedio_utilidad = roundNumber(t_total / _count, 2);
 	cur_frm.doc.promedio_costo = roundNumber(t_total2 / _count, 2);
 
-	cur_frm.refresh_fields();
+
+	cur_frm.refresh_field('margen_ganancias');
+	cur_frm.refresh_field('promedio_utilidad');
+	cur_frm.refresh_field('promedio_costo');
+	cur_frm.refresh_field('html_promedio_uticos');
+
 }
 
 function calcular_costo_venta_s() {
@@ -503,7 +579,11 @@ function calcular_costo_venta_s() {
 	cur_frm.doc.promedio_utilidad_s = roundNumber(t_total / _count, 2);
 	cur_frm.doc.promedio_costo_s = roundNumber(t_total2 / _count, 2);
 
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('margen_ganancias_sec');
+	cur_frm.refresh_field('promedio_utilidad_s');
+	cur_frm.refresh_field('promedio_costo_s');
+	cur_frm.refresh_field('html_margengan_s');
+
 }
 
 function calcular_otros_pasivos() {
@@ -513,7 +593,10 @@ function calcular_otros_pasivos() {
 		t_total += row.monto;
 	});
 	cur_frm.doc.total_otros_pasivos = t_total;
-	cur_frm.refresh_fields();
+
+
+	cur_frm.refresh_field('total_otros_pasivos');
+	cur_frm.refresh_field('total_otros_pasivos_html');
 }
 function calcular_prestamos_largoplazo() {
 	var t_total = 0;
@@ -524,7 +607,9 @@ function calcular_prestamos_largoplazo() {
 
 	});
 	cur_frm.doc.total_prestamolargo = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('total_prestamolargo');
+	cur_frm.refresh_field('total_prestamolargo_html');
+	cur_frm.refresh_field('prestamos_largoplazo');
 }
 function calcular_prestamos() {
 	var t_total = 0;
@@ -533,7 +618,9 @@ function calcular_prestamos() {
 		t_total += row.saldo;
 	});
 	cur_frm.doc.total_prestamos = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('prestamos');
+	cur_frm.refresh_field('total_prestamos');
+	cur_frm.refresh_field('total_prestamos_html');
 }
 
 function calcular_cuentasporcobrar() {
@@ -542,7 +629,10 @@ function calcular_cuentasporcobrar() {
 		t_total += row.monto;
 	});
 	cur_frm.doc.total_cuentasporcobrar = t_total;
-	cur_frm.refresh_fields();
+	console.log(t_total);
+	cur_frm.refresh_field('total_cuentasporcobrar');
+	cur_frm.refresh_field('total_cuentasporcobrar_html');
+
 }
 
 
@@ -581,18 +671,22 @@ function calcular_auxiliar_ventas() {
 		t_total += s_total;
 	});
 	cur_frm.doc.total_auxiliar_ventas = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('auxiliar_ventas');
+	cur_frm.refresh_field('total_auxiliar_ventas');
+	cur_frm.refresh_field('total_auxiliar_ventas_html');
 }
 
 function calcular_activos_familiares() {
 	var t_total = 0;
 	$.each(cur_frm.doc.activos_familiares, function (i, row) {
-		var s_total = row.cantidad * row.avaluo;
-		row.total = s_total;
-		t_total += s_total;
+		//var s_total = row.cantidad * row.avaluo;
+		//row.total = s_total;
+		t_total += row.total;
 	});
 	cur_frm.doc.total_activos_familiares = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('activos_familiares');
+	cur_frm.refresh_field('total_activos_familiares');
+	cur_frm.refresh_field('total_activos_familiares_html');
 }
 
 function calcular_otro_activos() {
@@ -604,7 +698,8 @@ function calcular_otro_activos() {
 		t_total += s_total;
 	});
 	cur_frm.doc.total_otrosactivos = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('otro_activos');
+	cur_frm.refresh_field('total_otrosactivos');
 }
 
 function calcular_vehiculo(frm) {
@@ -613,7 +708,8 @@ function calcular_vehiculo(frm) {
 		t_total += row.avaluo;
 	});
 	cur_frm.doc.total_vehiculo = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('vehiculo');
+	cur_frm.refresh_field('total_vehiculo');
 }
 
 function calcular_TERRENOS(frm) {
@@ -622,7 +718,8 @@ function calcular_TERRENOS(frm) {
 		t_total += row.avaluo;
 	});
 	cur_frm.doc.total_terrenos = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('terrenos_casas');
+	cur_frm.refresh_field('total_terrenos');
 }
 
 function calcular_MAQUINARIA(frm) {
@@ -633,7 +730,8 @@ function calcular_MAQUINARIA(frm) {
 		t_total += s_total;
 	});
 	cur_frm.doc.total_maquinaria = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('maquinaria_equipo');
+	cur_frm.refresh_field('total_maquinaria');
 }
 function calcular_MUEBLES_ENSERES(frm) {
 	var t_total = 0;
@@ -644,7 +742,8 @@ function calcular_MUEBLES_ENSERES(frm) {
 		t_total += s_total;
 	});
 	cur_frm.doc.total_mueblesenseres = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('muebles_enseres');
+	cur_frm.refresh_field('total_mueblesenseres');
 }
 function calcular_MERCADERIA(frm) {
 	var t_total = 0;
@@ -654,7 +753,8 @@ function calcular_MERCADERIA(frm) {
 		t_total += s_total;
 	});
 	cur_frm.doc.total_inventario = t_total;
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('mercaderia');
+	cur_frm.refresh_field('total_inventario');
 }
 
 function calcular_CUENTASPORCOBRAR(frm) {
@@ -667,154 +767,176 @@ function calcular_CUENTASPORCOBRAR(frm) {
 
 	cur_frm.doc.total_inicial = t_monto_inical;
 	cur_frm.doc.total_saldo = t_saldo;
-	console.log(t_monto_inical);
-	cur_frm.refresh_fields();
+	cur_frm.refresh_field('cuenta_por_cobrar');
+	cur_frm.refresh_field('total_inicial');
+	cur_frm.refresh_field('total_saldo');
+}
+function calculo_costo_act3(frm) {
+	frm.doc.costo_act3 = frm.doc.costo_act1 + frm.doc.costo_act3;
+	frm.refresh_field('costo_act3');
 }
 
-function ocultartodos(){
 
-	for( let i=0;i<arrayCols.length;i++){
-		cur_frm.set_df_property(arrayCols[i], "hidden", 1);  
+
+function eventoColapsar() {
+
+	/*	INVENTARIO sec_inventario    *
+	ACTIVOS FIJOS DE NEGOCIO  sec_acfij *
+	AUXILIAR DE PASIVOS sec_aux *
+	ACTIVOS FIJOS FAMILIARES (CASA TERRENO VEHICULO) sec_actfam *
+	ACTIVIDAD PRINCIPAL  sec00act *
+	FLUJO DE VENTAS POR MES (ACTIVIDAD PRINCIPAL) sec_flujo *
+	MARGEN DE GANANCIA Y COSTO DE VENTAS  sec_ *
+	AUXILIAR DE COMPRAS sec_auxcompras *
+	ACTIVIDAD SECUNDARIA secact2  *
+	FLUJO DE VENTAS POR MES (ACTIVIDAD SECUNDARIA) section_break_115 *
+	MARGEN DE GANANCIA Y COSTO DE VENTAS ACT SEC  sec_as  *
+	FLUJO DE INGRESOS POR ACTIVIDAD secflujoingreso *
+	GASTOS DEL NEGOCIO gastos_act1 *
+	FLUJO DE INGRESOS INTEGRAL sec00005
+	*/
+	var cuentas_por_cobrar_section = $('.section-head').find("a").filter(function () { return $(this).text() == "ACTIVO CORRIENTE - CUENTAS POR COBRAR"; }).parent()
+	cuentas_por_cobrar_section.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('cuentas_por_cobrar_section', !valor);
+	});
+
+	var sec_inventario = $('.section-head').find("a").filter(function () { return $(this).text() == "INVENTARIO"; }).parent()
+	sec_inventario.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('sec_inventario', !valor);
+	});
+
+	var sec_acfij = $('.section-head').find("a").filter(function () { return $(this).text() == "ACTIVOS FIJOS DE NEGOCIO"; }).parent()
+	sec_acfij.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('sec_acfij', !valor);
+		console.log('sec_acfij  ' + valor);
+	});
+
+	var sec_aux = $('.section-head').find("a").filter(function () { return $(this).text() == "AUXILIAR DE PASIVOS"; }).parent()
+	sec_aux.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('sec_aux', !valor);
+	});
+
+	var sec_actfam = $('.section-head').find("a").filter(function () { return $(this).text() == "ACTIVOS FIJOS FAMILIARES (CASA TERRENO VEHICULO)"; }).parent()
+	sec_actfam.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('sec_actfam', !valor);
+	});
+
+	var sec00act = $('.section-head').find("a").filter(function () { return $(this).text() == "ACTIVIDAD PRINCIPAL"; }).parent()
+	sec00act.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('sec00act', !valor);
+	});
+
+	var sec_flujo = $('.section-head').find("a").filter(function () { return $(this).text() == "FLUJO DE VENTAS POR MES (ACTIVIDAD PRINCIPAL)"; }).parent()
+	sec_flujo.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('sec_flujo', !valor);
+	});
+
+	var sec_ = $('.section-head').find("a").filter(function () { return $(this).text() == "MARGEN DE GANANCIA Y COSTO DE VENTAS"; }).parent()
+	sec_.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('sec_', !valor);
+	});
+
+	var sec_auxcompras = $('.section-head').find("a").filter(function () { return $(this).text() == "AUXILIAR DE COMPRAS"; }).parent()
+	sec_auxcompras.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('sec_auxcompras', !valor);
+	});
+
+	var secact2 = $('.section-head').find("a").filter(function () { return $(this).text() == "ACTIVIDAD SECUNDARIA"; }).parent()
+	secact2.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('secact2', !valor);
+	});
+
+	var section_break_115 = $('.section-head').find("a").filter(function () { return $(this).text() == "FLUJO DE VENTAS POR MES (ACTIVIDAD SECUNDARIA)"; }).parent()
+	section_break_115.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('section_break_115', !valor);
+	});
+
+	var sec_as = $('.section-head').find("a").filter(function () { return $(this).text() == "MARGEN DE GANANCIA Y COSTO DE VENTAS ACT SEC"; }).parent()
+	sec_as.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('sec_as', !valor);
+	});
+
+	var secflujoingreso = $('.section-head').find("a").filter(function () { return $(this).text() == "FLUJO DE INGRESOS POR ACTIVIDAD"; }).parent()
+	secflujoingreso.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		console.log(valor);
+		sessionStorage.setItem('secflujoingreso', !valor);
+	});
+
+	var section_break_157 = $('.section-head').find("a").filter(function () { return $(this).text() == "GASTOS DEL NEGOCIO"; }).parent()
+	section_break_157.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('section_break_157', !valor);
+	});
+	var sec00005 = $('.section-head').find("a").filter(function () { return $(this).text() == "FLUJO DE INGRESOS INTEGRAL"; }).parent()
+	sec00005.on("click", function () {
+		let valor = $(this).hasClass("collapsed");
+		sessionStorage.setItem('sec00005', !valor);
+	});
+
+}
+function verificarExpandido() {
+
+	if (sessionStorage.getItem('cuentas_por_cobrar_section') == 'true') {
+		cur_frm.fields_dict["cuentas_por_cobrar_section"].collapse();
+	}
+
+	if (sessionStorage.getItem('sec_inventario') == 'true') {
+		cur_frm.fields_dict["sec_inventario"].collapse();
+	}
+
+	if (sessionStorage.getItem('sec_acfij') == 'true') {
+		cur_frm.fields_dict["sec_acfij"].collapse();
+	}
+	if (sessionStorage.getItem('sec_aux') == 'true') {
+		cur_frm.fields_dict["sec_aux"].collapse();
+	}
+	if (sessionStorage.getItem('sec_actfam') == 'true') {
+		cur_frm.fields_dict["sec_actfam"].collapse();
+	}
+	if (sessionStorage.getItem('sec00act') == 'true') {
+		cur_frm.fields_dict["sec00act"].collapse();
+	}
+	if (sessionStorage.getItem('sec_flujo') == 'true') {
+		cur_frm.fields_dict["sec_flujo"].collapse();
+	}
+	if (sessionStorage.getItem('sec_') == 'true') {
+		cur_frm.fields_dict["sec_"].collapse();
+	}
+
+	if (sessionStorage.getItem('sec_auxcompras') == 'true') {
+		cur_frm.fields_dict["sec_auxcompras"].collapse();
+	}
+	if (sessionStorage.getItem('secact2') == 'true') {
+		cur_frm.fields_dict["secact2"].collapse();
+	}
+
+	if (sessionStorage.getItem('section_break_115') == 'true') {
+		cur_frm.fields_dict["section_break_115"].collapse();
+	}
+	if (sessionStorage.getItem('sec_as') == 'true') {
+		cur_frm.fields_dict["sec_as"].collapse();
+	}
+
+	if (sessionStorage.getItem('secflujoingreso') == 'true') {
+		cur_frm.fields_dict["secflujoingreso"].collapse();
+	}
+	if (sessionStorage.getItem('section_break_157') == 'true') {
+		cur_frm.fields_dict["section_break_157"].collapse();
+	}
+	if (sessionStorage.getItem('sec00005') == 'true') {
+		cur_frm.fields_dict["sec00005"].collapse();
 	}
 }
-
-let arrayCols=[   
-
-"cuentas_por_cobrar_section",
-"cuenta_por_cobrar",
-"totales_html",
-"sec_inventario",
-"html_27",
-"mercaderia",
-"total_inventario_html",
-"sec_acfij",
-"html_32",
-"total_activosfijneg",
-"muebles_enseres",
-"total_mueblesensereshtml",
-"maquinaria_equipo",
-"total_maquinaria_html",
-"terrenos_casas",
-"total_terrenos_html",
-"vehiculo",
-"total_vehiculo_html",
-"otro_activos",
-"total_otrosactivos_html",
-"sec_aux",
-"html_50",
-"cuentasporcobrar",
-"total_cuentasporcobrar_html",
-"prestamos",
-"total_prestamos_html",
-"prestamos_largoplazo",
-"total_prestamolargo_html",
-"otros_pasivos",
-"total_otros_pasivos_html",
-"sec_actfam",
-"activos_familiares",
-"total_activos_familiares_html",
-"sec_auxfamil",
-"html_68",
-"html_69",
-"actividad_principal",
-"html_71",
-"auxiliar_ventas",
-"total_auxiliar_ventas_html",
-"sec_flujo",
-"enero",
-"febrero",
-"marzo",
-"column_break_41",
-"abril",
-"mayo",
-"junio",
-"column_break_43",
-"julio",
-"agosto",
-"septiembre",
-"column_break_49",
-"octubre",
-"noviembre",
-"diciembre",
-"column_break_45",
-"meses_promedio",
-"meses_total",
-"sec_",
-"margen_ganancias",
-"html_promedio_uticos",
-"sec_auxcompras",
-"html_101",
-"frecuencia_compras",
-"productos_aux_compras",
-"html_productos_aux_compras",
-"sec_flujos",
-"section_break_108",
-"html_109",
-"actividad_secundaria",
-"html_111",
-"auxiliar_ventas_sec",
-"auxiliar_ventas_sec_html",
-"section_break_115",
-"enero_s",
-"febrero_s",
-"marzo_s",
-"column_break_118",
-"abril_s",
-"mayo_s",
-"junio_s",
-"column_break_121",
-"julio_s",
-"agosto_s",
-"septiembre_s",
-"section_break_124",
-"octubre_s",
-"noviembre_s",
-"diciembre_s",
-"column_break_127",
-"promedio_s",
-"total_s",
-"section_break_101",
-"margen_ganancias_sec",
-"html_margengan_s",
-"hmlt111",
-"frecuencia_compras_sec",
-"htmltotal_fc_s",
-"productos_aux_compras_sec",
-"htmltotal_aux_com_sec",
-"section_break_137",
-"htmltitulo11",
-"section_break_147",
-"actividad_1",
-"ingventas_act1",
-"compras_act1",
-"costo_act1",
-"ingre_act1",
-"gastos_act1",
-"column_break_152",
-"actividad_2",
-"ingventas_act2",
-"compras_act2",
-"costo_act2",
-"ingre_act2",
-"gastos_act2",
-"column_break_157",
-"total_ingresos",
-"ingventas_act3",
-"compras_act3",
-"costo_act3",
-"ingre_act3",
-"gastos_act3",
-"section_break_157",
-"flujo_ingreso_gastos",
-"sec00005",
-"htmlsec11",
-"flujo_ingresos_integral",
-"html_flujo_ingresos_integral",
-"gastos_familiares",
-"html_gastos_familiares",
-"section_break_178",
-"tt_ingresonetouf",
-"tt_pagocuotas",
-"tt_flujointegral",
-"section_break_182",
-"html_indicadores"];
