@@ -3,11 +3,17 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
-# import frappe
+import frappe
 from frappe.model.document import Document
 
 class hoja_trabajo(Document):
 	def before_save(self):
+ 
+		
+		if not self.bancos :
+			
+			self.bancos= 0
+    			
 		self.total_activosfijneg = self.total_mueblesenseres + self.total_maquinaria  + self.total_terrenos  + self.total_vehiculo  + self.total_otrosactivos 
 		self.rt_corrientes = self.efectivo + self.bancos + self.total_otrosactivos + self.total_saldo +self.total_inventario 
 		self.rt_fijos = self.total_mueblesenseres + self.total_maquinaria + self.total_vehiculo + self.total_terrenos

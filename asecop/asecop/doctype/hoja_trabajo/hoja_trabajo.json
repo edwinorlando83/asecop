@@ -278,8 +278,7 @@
   {
    "fieldname": "bancos",
    "fieldtype": "Currency",
-   "label": "Bancos",
-   "reqd": 1
+   "label": "Bancos"
   },
   {
    "default": "0.0",
@@ -1408,7 +1407,7 @@
    "hidden": 1
   }
  ],
- "modified": "2021-04-09 13:20:37.115046",
+ "modified": "2021-05-24 14:55:07.056931",
  "modified_by": "Administrator",
  "module": "Asecop",
  "name": "hoja_trabajo",
